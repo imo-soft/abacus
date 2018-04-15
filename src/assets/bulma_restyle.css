@@ -1,0 +1,82 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background-color: WhiteSmoke;
+
+}
+
+.container {
+
+	text-align: center;
+	
+	background-image: url("/static/math_sheet.png");	
+    background-repeat: repeat;
+    overflow: auto;
+    
+    position:fixed;
+    top: 0;
+    left: 0;
+	bottom: 0;
+	right: 0;    
+    
+    height: 100%;
+}
+
+.navbar-item.is-mega {
+  position: static;
+
+  &.is-mega-menu-title {
+    margin-bottom: 0;
+    padding: .375rem 1rem;
+  }
+}
+
+.navbar {
+	&.is-transparent {
+		background-color: transparent;
+		background-image: none;
+	}
+}
+
+.nav-item img {
+  max-height: 44px
+}
+
+.navbar {
+    background-image: url("/static/math_sheet.png");	
+}
+
+.math_box {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	#height: 100%;
+	min-height: 75px; 
+}
+
+.math_box-item {
+	margin: 0 10px;
+}
+
+.input_blue {
+	size: 2; 
+	text-align: right; 
+	width: 60px; 
+}
+
+.input_red {
+	size: 2; 
+	text-align: right; 
+	width: 75px; 
+}
+
+.bottom_message {
+	position: absolute;
+	bottom: 0;
+    width:100%;
+    text-align: center;	
+}
