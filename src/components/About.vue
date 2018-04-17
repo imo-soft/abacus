@@ -1,17 +1,15 @@
 <template>
   <div class="about">
-
     <div>
-      Абакус v{{ version }}<br><br>
+      <b>Абакус</b> v{{ version }}<br>
       Аутор: Предраг Влајковић<br>
       mailto: abacus@softwarepieces.com<br>
       <br>
-      Посвећено мом сину Огњену...
+      Посвећено мом сину Огњену, са жељом да буде успешан математичар
     </div>
     <br>
     <img src="/static/poster.png" alt="Ognjen">    
-    <br>
-    <br>        
+    <br>       
   </div>
 </template>
 
