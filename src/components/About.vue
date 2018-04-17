@@ -2,9 +2,9 @@
   <div class="about">
 
     <div>
+      Абакус v{{ version }}<br><br>
       Аутор: Предраг Влајковић<br>
       mailto: abacus@softwarepieces.com<br>
-      <br>
       <br>
       Посвећено мом сину Огњену...
     </div>
@@ -20,8 +20,25 @@ export default {
   name: 'About',
   data () {
     return {
-      title: "О нама"
+      title: "О нама",
+      version: null
     }
-  }
+  },
+  mounted () {
+    this.getVersion();
+  },  
+  methods : {
+    getVersion () {
+      var result = null;
+      const fileName = "/static/version.txt";
+
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("GET", fileName, false);
+        xmlhttp.send();
+        if (xmlhttp.status==200) {
+          this.version = xmlhttp.responseText;
+        }
+    }
+  },
 }
 </script>

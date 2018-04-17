@@ -32,6 +32,6 @@ export default new Router({
 		{ path: '/oduzimanje2', name: 'Oduzimanje2', component: Oduzimanje2 },
 		{ path: '/oduzimanje3', name: 'Oduzimanje3', component: Oduzimanje3 },
 		{ path: '/oduzimanje4', name: 'Oduzimanje4', component: Oduzimanje4 },
-		{ path: '*', name: 'Dashboard', component: Dashboard },
+		//{ path: '*', name: 'Dashboard', component: Dashboard },
 	]
 })
