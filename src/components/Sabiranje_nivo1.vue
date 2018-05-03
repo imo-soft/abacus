@@ -84,7 +84,7 @@ export default {
     	},
     	nextCalculation () {
 	 		this.add1 = this.randomNumber (2,5);
-			this.add2 = this.randomNumber (1,4);
+			this.add2 = this.randomNumber (1,4);		
 			if (this.add2 > this.add1) {
 				this.add = this.add2
 				this.add2 = this.add1

@@ -3,25 +3,25 @@
 
     <div>
       <router-link :to="{ name:'Oduzimanje1' }">
-        <button class="button is-info is-medium is-rounded">Одузимање ниво 1</button>
+        <button class="button is-info is-medium is-rounded">Разлика два броја до 10</button>
       </router-link>
     </div>
     <br>
     <div>
       <router-link :to="{ name:'Oduzimanje2' }">
-        <button class="button is-info is-medium is-rounded">Одузимање ниво 2</button>
+        <button class="button is-info is-medium is-rounded">Разлика два броја до 20</button>
       </router-link>    
     </div>
     <br>    
     <div>
       <router-link :to="{ name:'Oduzimanje3' }">
-        <button class="button is-info is-medium is-rounded">Одузимање ниво 3</button>
+        <button class="button is-info is-medium is-rounded">Непознат број до 10</button>
       </router-link>    
     </div>
     <br>    
     <div>
       <router-link :to="{ name:'Oduzimanje4' }">
-        <button class="button is-info is-medium is-rounded">Одузимање ниво 4</button>
+        <button class="button is-info is-medium is-rounded">Непознат број до 20</button>
       </router-link>    
     </div>    
   </div>

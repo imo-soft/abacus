@@ -82,7 +82,10 @@ export default {
     	},
     	nextCalculation () {
 	 		this.add1 = this.randomNumber (10);
-			this.add2 = this.randomNumber (9);
+	 		this.add2 = this.randomNumber (9);
+			while (this.add1 == this.add2) {
+				this.add2 = this.randomNumber (9);
+			}
 			if (this.add2 > this.add1) {
 				this.add = this.add2
 				this.add2 = this.add1
