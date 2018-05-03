@@ -19,7 +19,7 @@ export default {
   data () {
     return {
       title: "О нама",
-      version: ""
+      version: "1.0"
     }
   },
   mounted () {
