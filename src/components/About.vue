@@ -19,7 +19,7 @@ export default {
   data () {
     return {
       title: "О нама",
-      version: null
+      version: ""
     }
   },
   mounted () {
@@ -27,7 +27,6 @@ export default {
   },  
   methods : {
     getVersion () {
-      var result = null;
       const fileName = "/static/version.txt";
 
       var xmlhttp = new XMLHttpRequest();
