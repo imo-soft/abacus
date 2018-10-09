@@ -84,7 +84,7 @@ export default {
 	 		this.add1 = this.randomNumber (20);
 			this.add2 = this.randomNumber (10);
 			while (this.add1 == this.add2) {
-				this.add2 = this.randomNumber (9);
+				this.add2 = this.randomNumber (10);
 			}			
 			if (this.add2 > this.add1) {
 				this.add = this.add2
