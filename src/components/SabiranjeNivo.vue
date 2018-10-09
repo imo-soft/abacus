@@ -1,7 +1,7 @@
 <template>
-	<div class="is-fullhd overlay">
+	<div class="main_container">
 
-		<h4 class="title is-5">Збир два броја до 5</h4>
+		<h4 class="title is-5">{{ title }}</h4>
 
 		<div class="math_box">
 			<input class="input is-normal input_blue" type="number" readonly="readonly" v-model="add1">
@@ -24,15 +24,15 @@
         	</div>
         </div>
 
-		<div class="bottom_message">   
+		<div class="bottom_box">   
         	<p>Успех: <b>{{ score }} / {{ played }}</b></p>
         	<br>		     
-			<div class="columns is-mobile">        	
-				<div class="column is-mobile is-half has-text-left">
+			<div class="columns is-mobile">
+				<div class="column is-half has-text-centered">
         			<button class="button is-link is-small is-rounded" @click="resetGame">Из почетка</button>				
 				</div>
-				<div class="column is-mobile is-half has-text-right">
-        			<button v-show="showresult==true"class="button is-link is-small is-rounded" @click="nextCalculation">Даље ></button>
+				<div class="column is-half has-text-centered">
+        			<button v-show="showresult==true" class="button is-link is-small is-rounded" @click="nextCalculation">Даље ></button>
 				</div>
         	</div>
         </div>
@@ -44,11 +44,11 @@
 export default {
 	name: 'SabiranjeNivo', 	
 	props: { 
-		prop_title: { String, default: "Сабирање"}, 
-		prop_min_1: { Number, default: 2}, 
-		prop_max_1: { Number, default: 5}, 
-		prop_min_2: { Number, default: 1}, 
-		prop_max_2: { Number, default: 4} 
+		prop_title: { String, default: "Сабирање" }, 
+		prop_min_1: { Number }, 
+		prop_max_1: { Number }, 
+		prop_min_2: { Number }, 
+		prop_max_2: { Number } 
 		},
 	data () {
 		return {

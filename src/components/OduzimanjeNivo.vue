@@ -1,7 +1,7 @@
 <template>
-	<div>
+	<div class="main_container">
 
-		<h4 class="title is-5">Разлика два броја до 10</h4>
+		<h4 class="title is-5">{{ title }}</h4>
 
 		<div class="math_box">
 			<input class="input is-normal input_blue" type="number" readonly="readonly" v-model="add1">
@@ -9,13 +9,13 @@
 			<input class="input is-normal input_blue" type="number" readonly="readonly" v-model="add2">
 			&nbsp=&nbsp
 			<input class="input is-danger is-focused is-normal input_red" ref="answer" type="number"  maxlength="2" min="1" max="20" v-model="answer">
-		</div>	
+		</div>
 
 		<div class="answer_box">
-        	<button v-show="answer != null && showresult==false" class="button is-info is-medium is-rounded" @click="getResult">Одговор</button>
+        	<button v-show="answer != null && showresult==false" class="button is-info is-small is-rounded" @click="getResult">Одговор</button>
         </div>
 
-		<div class="scoreboard_box">   
+		<div class="scoreboard_box">
 			<div v-show="showresult">
         		<i v-if="correct" class="far fa-check-circle fa-3x" style="color:blue"></i>
         		<i v-else class="far fa-times-circle fa-3x" style="color:red"></i>
@@ -24,18 +24,19 @@
         	</div>
         </div>
         
-		<div class="bottom_message">   
+		<div class="bottom_box">   
         	<p>Успех: <b>{{ score }} / {{ played }}</b></p>
         	<br>		     
-			<div class="columns is-mobile">        	
+			<div class="columns is-mobile">
 				<div class="column is-half has-text-left">
-        			<button class="button is-link is-medium is-rounded" @click="resetGame">Из почетка</button>				
+        			<button class="button is-link is-small is-rounded" @click="resetGame">Из почетка</button>
 				</div>
 				<div class="column is-half has-text-right">
-        			<button v-show="showresult==true"class="button is-link is-medium is-rounded" @click="nextCalculation">Даље ></button>				
+        			<button v-show="showresult==true"class="button is-link is-small is-rounded" @click="nextCalculation">Даље ></button>
 				</div>
         	</div>
         </div>
+
 	</div>
 </template>
 
@@ -44,12 +45,12 @@ export default {
 	name: 'Oduzimanje_nivo1',
 	props: { 
 		prop_title: { String, default: "Одузимање"}, 
-		prop_max_1: { Number, default: 20}, 
-		prop_max_2: { Number, default: 10} 
-		},	
+		prop_max_1: { Number }, 
+		prop_max_2: { Number }
+	},
 	data () {
 		return {
-		  title: "Одузимање",
+		  title: null,
 		  add_1_max: 0,
 		  add_2_max: 0,		  
 		  add: null,

@@ -1,8 +1,8 @@
 <template>
-  <div class="sabiranje">
+  <div id="sabiranje">
 
     <div>
-      <router-link :to="{ name:'SabiranjeNivo', params: { prop_title:'Сабирање до 5', prop_min_1:2,prop_max_1:5,prop_min_2:1,prop_max_2:4} }">
+      <router-link :to="{ name:'SabiranjeNivo', params: { prop_title:'Сабирање до 5', prop_min_1:2, prop_max_1:5, prop_min_2:1, prop_max_2:4 } }">
         <button class="button is-info is-medium is-rounded">Сабирање до 5</button>
       </router-link>    
     </div>

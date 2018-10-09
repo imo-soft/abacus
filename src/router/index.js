@@ -21,12 +21,17 @@ export default new Router({
 		{ path: '', name: 'Dashboard', component: Dashboard },
 		{ path: '/about', name: 'About', component: About },
 		{ path: '/sabiranje', name: 'Sabiranje', component: Sabiranje },
-		{ path: '/sabiranje_nivo', name: 'SabiranjeNivo', component: SabiranjeNivo },
+		{ path: '/sabiranje_nivo', name: 'SabiranjeNivo', component: SabiranjeNivo, props: true },
 		{ path: '/sabiranje3', name: 'Sabiranje3', component: Sabiranje3 },
 		{ path: '/sabiranje3', name: 'Sabiranje4', component: Sabiranje4 },	
 		{ path: '/oduzimanje', name: 'Oduzimanje', component: Oduzimanje },
-		{ path: '/oduzimanje_nivo', name: 'OduzimanjeNivo', component: OduzimanjeNivo },
+		{ path: '/oduzimanje_nivo', name: 'OduzimanjeNivo', component: OduzimanjeNivo, props: true },
 		{ path: '/oduzimanje3', name: 'Oduzimanje3', component: Oduzimanje3 },
 		{ path: '/oduzimanje4', name: 'Oduzimanje4', component: Oduzimanje4 },
 	]
 })
+		// prop_title: { String, default: "Сабирање"}, 
+		// prop_min_1: { Number, default: 1}, 
+		// prop_max_1: { Number, default: 1}, 
+		// prop_min_2: { Number, default: 1}, 
+		// prop_max_2:
