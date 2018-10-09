@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import MobileDetect from 'mobile-detect'   
+import MobileDetect from 'mobile-detect';
 export default { 
   name: 'Dashboard',
   data () {
@@ -35,15 +35,19 @@ export default {
     }
   },
   mounted () {
-    var md = new MobileDetect(window.navigator.userAgent);
+    var md = new MobileDetect(navigator.userAgent);
+    // var md = new MobileDetect(
+    //     'Mozilla/5.0 (Linux; U; Android 4.0.3; en-in; SonyEricssonMT11i' +
+    // ' Build/4.1.A.0.562) AppleWebKit/534.30 (KHTML, like Gecko)' +
+    // ' Version/4.0 Mobile Safari/534.30');
  
     console.log (md.os()); 
-    console.log (md.is('AndroidOS')); 
-    console.log (md.phone()); 
+     console.log (md.is('AndroidOS')); 
+     console.log (md.phone()); 
     console.log (md.mobile()); 
-    console.log (md.tablet()); 
-    console.log (md.os()); 
-    if (md.is('AndroidOS') || md.is('iPhone')) {
+     console.log (md.tablet()); 
+     console.log (md.os()); 
+    if (md.mobile()==true || md.is('AndroidOS')) {
       this.desktop = false;
     }
   },
