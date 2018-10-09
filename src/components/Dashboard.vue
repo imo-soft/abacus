@@ -15,7 +15,7 @@
     <br>
     <br>
     <br>        
-    <div class="bottom_message">
+    <div v-show="desktop" class="bottom_message">
       Скините мобилну апликацију (.apk file)  <a href="/abacus.apk" target="_blank"><b>овде</b></a> <br>
       и ручно је инсталирајте на свој <b>андроид</b> уређај.
     </div>
@@ -24,12 +24,29 @@
 </template>
 
 <script>
-export default {
+import MobileDetect from 'mobile-detect'   
+export default { 
   name: 'Dashboard',
   data () {
     return {
-      title: "Добродошли"
+      title: "Добродошли",
+      desktop: true,
+      md: null
     }
-  }
+  },
+  mounted () {
+    var md = new MobileDetect(window.navigator.userAgent);
+
+    console.log (md.phone()); 
+    console.log (md.tablet());
+    console.log (md.mobile()); 
+    console.log (md.os());     
+    console.log (md.userAgent()); 
+
+    if (md.phone() || md.tablet() || md.mobile()) {
+      this.desktop = false;
+    }
+    console.log (this.desktop);
+  },
 }
 </script>

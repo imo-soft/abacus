@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "bulma": "^0.6.2",
+    "mobile-detect": "^1.4.3",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1"
   },
