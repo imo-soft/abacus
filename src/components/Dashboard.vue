@@ -36,17 +36,13 @@ export default {
   },
   mounted () {
     var md = new MobileDetect(window.navigator.userAgent);
+ 
+    // console.log (md.is('Android') ); 
+    // console.log (md.is('iPhone') ); 
 
-    console.log (md.phone()); 
-    console.log (md.tablet());
-    console.log (md.mobile()); 
-    console.log (md.os());     
-    console.log (md.userAgent()); 
-
-    if (md.phone() || md.tablet() || md.mobile()) {
+    if (md.is('Android') || md.is('iPhone')) {
       this.desktop = false;
     }
-    console.log (this.desktop);
   },
 }
 </script>
