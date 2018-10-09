@@ -47,8 +47,8 @@ export default {
     activeClass: function (...names) {
       for (let name of names) {
         if (name == this.$route.name) {
-          return 'link-active'
-          alert (name)
+          // alert (name);    
+          return 'link-active';
         }
       }
     }   
