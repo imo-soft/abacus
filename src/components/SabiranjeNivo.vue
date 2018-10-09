@@ -11,11 +11,11 @@
 			<input class="input is-danger is-focused is-normal input_red" ref="answer" type="number"  maxlength="4" min="1" max="20" v-model="answer">
 		</div>		
 
-		<div style="height: 30px;">
-        	<button v-show="answer != null && showresult==false" class="button is-info is-medium is-rounded" @click="getResult">Одговор</button>
+		<div class="answer_box">
+        	<button v-show="answer != null && showresult==false" class="button is-info is-small is-rounded" @click="getResult">Одговор</button>
         </div>
 
-		<div style="height: 80px;">   
+		<div class="scoreboard_box">   
 			<div v-show="showresult">
         		<i v-if="correct" class="far fa-check-circle fa-3x" style="color:blue"></i>
         		<i v-else class="far fa-times-circle fa-3x" style="color:red"></i>
@@ -29,10 +29,10 @@
         	<br>		     
 			<div class="columns is-mobile">        	
 				<div class="column is-mobile is-half has-text-left">
-        			<button class="button is-link is-medium is-rounded" @click="resetGame">Из почетка</button>				
+        			<button class="button is-link is-small is-rounded" @click="resetGame">Из почетка</button>				
 				</div>
 				<div class="column is-mobile is-half has-text-right">
-        			<button v-show="showresult==true"class="button is-link is-medium is-rounded" @click="nextCalculation">Даље ></button>				
+        			<button v-show="showresult==true"class="button is-link is-small is-rounded" @click="nextCalculation">Даље ></button>
 				</div>
         	</div>
         </div>
@@ -42,10 +42,21 @@
 
 <script>
 export default {
-	name: 'Sabiranje_nivo1',
+	name: 'SabiranjeNivo', 	
+	props: { 
+		prop_title: { String, default: "Сабирање"}, 
+		prop_min_1: { Number, default: 2}, 
+		prop_max_1: { Number, default: 5}, 
+		prop_min_2: { Number, default: 1}, 
+		prop_max_2: { Number, default: 4} 
+		},
 	data () {
 		return {
-		  title: "Сабирање",
+		  title: null,
+		  add_1_min: 0,
+		  add_1_max: 0,
+		  add_2_min: 0,
+		  add_2_max: 0,
 		  add: null,
 		  add1: null,
 		  add2: null,
@@ -59,6 +70,11 @@ export default {
 		}
 	},	
 	mounted () {
+		this.title = this.prop_title;
+		this.add_1_min = this.prop_min_1;
+		this.add_1_max = this.prop_max_1;
+		this.add_2_min = this.prop_min_2;
+		this.add_2_max = this.prop_max_2;
 		this.nextCalculation ();
 	},
   	methods : {
@@ -83,8 +99,10 @@ export default {
     		}    		
     	},
     	nextCalculation () {
-	 		this.add1 = this.randomNumber (2,5);
-			this.add2 = this.randomNumber (1,4);		
+	 		// this.add1 = this.randomNumber (2,5);
+			// this.add2 = this.randomNumber (1,4);
+			this.add1 = this.randomNumber (this.add_1_min, this.add_1_max);
+			this.add2 = this.randomNumber (this.add_2_min, this.add_2_max);
 			if (this.add2 > this.add1) {
 				this.add = this.add2
 				this.add2 = this.add1

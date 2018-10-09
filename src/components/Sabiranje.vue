@@ -2,13 +2,13 @@
   <div class="sabiranje">
 
     <div>
-      <router-link :to="{ name:'Sabiranje1' }">
+      <router-link :to="{ name:'SabiranjeNivo', params: { prop_title:'Сабирање до 5', prop_min_1:2,prop_max_1:5,prop_min_2:1,prop_max_2:4} }">
         <button class="button is-info is-medium is-rounded">Сабирање до 5</button>
-      </router-link>
+      </router-link>    
     </div>
     <br>
     <div>
-      <router-link :to="{ name:'Sabiranje2' }">
+      <router-link :to="{ name:'SabiranjeNivo', params: { prop_title:'Сабирање до 10', prop_min_1:3,prop_max_1:10,prop_min_2:1,prop_max_2:5} }">
         <button class="button is-info is-medium is-rounded">Сабирање до 10</button>
       </router-link>    
     </div>
@@ -24,6 +24,7 @@
         <button class="button is-info is-medium is-rounded">Непознат број до 10</button>
       </router-link>    
     </div>    
+
   </div>
 </template>
 

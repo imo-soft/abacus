@@ -1,7 +1,7 @@
 <template>
 	<div>
 
-		<h4 class="title is-5">Разлика два броја до 20</h4>
+		<h4 class="title is-5">Разлика два броја до 10</h4>
 
 		<div class="math_box">
 			<input class="input is-normal input_blue" type="number" readonly="readonly" v-model="add1">
@@ -9,13 +9,13 @@
 			<input class="input is-normal input_blue" type="number" readonly="readonly" v-model="add2">
 			&nbsp=&nbsp
 			<input class="input is-danger is-focused is-normal input_red" ref="answer" type="number"  maxlength="2" min="1" max="20" v-model="answer">
-		</div>
+		</div>	
 
-		<div style="height: 30px;">
+		<div class="answer_box">
         	<button v-show="answer != null && showresult==false" class="button is-info is-medium is-rounded" @click="getResult">Одговор</button>
         </div>
 
-		<div style="height: 80px;">   
+		<div class="scoreboard_box">   
 			<div v-show="showresult">
         		<i v-if="correct" class="far fa-check-circle fa-3x" style="color:blue"></i>
         		<i v-else class="far fa-times-circle fa-3x" style="color:red"></i>
@@ -23,7 +23,8 @@
         		<br>
         	</div>
         </div>
-		<div style="height: 70px;">   
+        
+		<div class="bottom_message">   
         	<p>Успех: <b>{{ score }} / {{ played }}</b></p>
         	<br>		     
 			<div class="columns is-mobile">        	
@@ -41,9 +42,16 @@
 <script>
 export default {
 	name: 'Oduzimanje_nivo1',
+	props: { 
+		prop_title: { String, default: "Одузимање"}, 
+		prop_max_1: { Number, default: 20}, 
+		prop_max_2: { Number, default: 10} 
+		},	
 	data () {
 		return {
 		  title: "Одузимање",
+		  add_1_max: 0,
+		  add_2_max: 0,		  
 		  add: null,
 		  add1: null,
 		  add2: null,
@@ -57,6 +65,9 @@ export default {
 		}
 	},	
 	mounted () {
+		this.title = this.prop_title;
+		this.add_1_max = this.prop_max_1;
+		this.add_2_max = this.prop_max_2;
 		this.nextCalculation ();
 	},
   	methods : {
@@ -72,20 +83,20 @@ export default {
 				this.correct = true;
     			this.score ++;
     			this.audio_filename = 'ok_' + this.randomNumber (5);
-    			this.playSound();     			
+    			this.playSound();    			
     		} else {
     		// incorrect answer
     			this.correct = false;
     			this.audio_filename = 'wrong_' + this.randomNumber (5);
-    			this.playSound();     			
+    			this.playSound();    			
     		}    		
     	},
     	nextCalculation () {
-	 		this.add1 = this.randomNumber (20);
-			this.add2 = this.randomNumber (10);
+	 		this.add1 = this.randomNumber (this.add_1_max);
+	 		this.add2 = this.randomNumber (this.add_2_max);
 			while (this.add1 == this.add2) {
-				this.add2 = this.randomNumber (10);
-			}			
+				this.add2 = this.randomNumber (this.add_2_max);
+			}
 			if (this.add2 > this.add1) {
 				this.add = this.add2
 				this.add2 = this.add1
@@ -102,18 +113,10 @@ export default {
     		this.score = this.played = 0;
     		this.nextCalculation();    		
     	},
-    	answerUp () {
-    		if (this.answer < 20 & this.answered == false) 
-    			this.answer++;
-    	},
-    	answerDown () {
-    		if (this.answer > 0 & this.answered == false) 
-    			this.answer--;
-    	},
 	    playSound () {
 	        var audio = new Audio('/static/audio/'+this.audio_filename+'.mp3');
 	        audio.play();
-    	} 
+    	}    	
   	}	
 }
 </script>
