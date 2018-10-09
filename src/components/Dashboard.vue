@@ -37,9 +37,10 @@ export default {
   mounted () {
     var md = new MobileDetect(window.navigator.userAgent);
  
-    // console.log (md.is('Android') ); 
-    // console.log (md.is('iPhone') ); 
-
+    console.log (md.is('Android')); 
+    console.log (md.is('iPhone')); 
+    console.log (md.phone()); 
+    console.log (md.mobile()); 
     if (md.is('Android') || md.is('iPhone')) {
       this.desktop = false;
     }
