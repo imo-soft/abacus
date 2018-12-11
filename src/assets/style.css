@@ -1,0 +1,210 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #828282;
+  background: #fff;
+  padding-top: 70px;
+  background-color: WhiteSmoke;  
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  background-color: #e6e6e6; 
+  padding-bottom: 5px;
+}
+
+.container {
+	text-align: center;
+	background-image: url("/static/math_sheet.png");	
+    background-repeat: repeat;
+    overflow: auto;
+    position:fixed;
+    top: 0;
+    left: 0;
+	bottom: 0;
+	right: 0;    
+    height: 100%;
+  	padding-top: 80px;
+}
+
+.container-center {
+  position: relative;
+}
+
+.container-fluid {
+  max-width: 1400px;
+  width: 100%;
+  display: flex;
+  text-align: center;
+}
+
+.center {
+  position: relative;
+  display: block;
+  text-align: center;
+}
+
+.small-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.navbar {
+  min-height: 4px;
+  padding-bottom: 5px;
+}
+
+.navbar>nav-link {
+  color: white;
+  font: black;
+}
+
+.navbar>nav-link-active {
+  color: black;
+  font: white;
+}
+
+.divider {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.error-container {
+  display: flex;
+  align-items: center;  
+  justify-content: center;
+  min-height: 600px;
+}
+
+#page {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+a {
+/*  color: #52d3aa;*/
+  color: gray;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+a:hover, a:active, a:focus {
+  /*color: #52d3aa;*/
+  outline: none;
+  text-decoration: none;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+h1, h2, h3, h4, h5, h6, figure {
+  color: #000;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+}
+
+.form-control {
+  box-shadow: none;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  height: 30px; 
+  font-size: 14px;
+  margin-bottom: 0px;
+}
+
+.form-control:active, .form-control:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #52d3aa;
+}
+
+.control-label {
+  font-size: 13px;
+  margin-bottom: 0px;
+}
+
+.main_container {
+	width: 100%; 
+	text-align: center;	
+}
+
+.math_box {
+	text-align: center;	
+	height: 35px; 
+}
+
+.answer_box {
+	height: 60px; 
+}
+
+.scoreboard_box {
+	height: 50px; 
+	background: red;	
+}
+
+.bottom_box {	
+    height: 20px;  
+}
+
+.math_box-item {
+	margin: 0 0px;
+}
+
+
+/* Buttons */
+
+.btn {
+  margin-right: 4px;
+  margin-bottom: 4px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  padding: 6px 10px;
+}
+
+.btn-info {
+  background: #5bc0de;
+  color: #fff;
+  border: 2px solid #5bc0de;
+}
+
+.btn.btn-sm {
+  padding: 3px 6px !important;
+  font-size: 12px;   
+}
+
+.btn.btn-xs {
+  padding: 2px 4px !important;
+  font-size: 11px;
+}
+
+.btn.service-ok {
+  padding: 1px 2px;
+  font-size: 9px;
+}
+
+.btn.service-fail {
+  padding: 1px 2px;
+  font-size: 8px;
+}
+

@@ -3,22 +3,17 @@
 
     <div>
       <router-link :to="{ name:'Sabiranje' }">
-        <button class="button is-info is-medium is-rounded">Сабирање</button>
+        <button class="btn btn-info">Сабирање</button>
       </router-link>
     </div>
     <br>
     <div>
       <router-link :to="{ name:'Oduzimanje' }">
-        <button class="button is-info is-medium is-rounded">Одузимање</button>
+        <button class="btn btn-info">Одузимање</button>
       </router-link>    
     </div>
-    <br>
-    <br>
-    <br>        
-    <div v-show="desktop" class="bottom_message">
-      Скините мобилну апликацију (.apk file)  <a href="/abacus.apk" target="_blank"><b>овде</b></a> <br>
-      и ручно је инсталирајте на свој <b>андроид</b> уређај.<br>
-    </div>
+
+    <img src="/static/abacus.png" alt="Abacus">
 
   </div>
 </template>

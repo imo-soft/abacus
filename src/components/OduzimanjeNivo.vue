@@ -1,38 +1,43 @@
 <template>
 	<div class="main_container">
 
-		<h4 class="title is-5">{{ title }}</h4>
+		<h4>{{ title }}</h4>
 
-		<div class="math_box">
-			<input class="input is-normal input_blue" type="number" readonly="readonly" v-model="add1">
-			&nbsp-&nbsp
-			<input class="input is-normal input_blue" type="number" readonly="readonly" v-model="add2">
-			&nbsp=&nbsp
-			<input class="input is-danger is-focused is-normal input_red" ref="answer" type="number"  maxlength="2" min="1" max="20" v-model="answer">
+		<div class="math_box text_center">
+			<div class="form-group row">
+				<div class="col-3">
+					<input class="form-control" readonly="readonly" type="number" v-model="add1">
+				</div>
+				<div class="col-1">-</div>
+				<div class="col-3">
+					<input class="form-control" readonly="readonly" type="number" v-model="add2">
+				</div>
+				<div class="col-1">=</div>
+				<div class="col-3">
+					<input class="form-control" ref="answer" type="number"  maxlength="4" min="1" max="20" v-model="answer">
+				</div>
+			</div>
 		</div>
 
 		<div class="answer_box">
-        	<button v-show="answer != null && showresult==false" class="button is-info is-small is-rounded" @click="getResult">Одговор</button>
-        </div>
-
-		<div class="scoreboard_box">
+        	<button v-show="answer != null && showresult==false" class="btn btn-info btn-sm" @click="getResult">Одговор</button>
 			<div v-show="showresult">
-        		<i v-if="correct" class="far fa-check-circle fa-3x" style="color:blue"></i>
-        		<i v-else class="far fa-times-circle fa-3x" style="color:red"></i>
+        		<i v-if="correct" class="far fa-check-circle fa-2x" style="color:blue"></i>
+        		<i v-else class="far fa-times-circle fa-2x" style="color:red"></i>
         		<p v-show="!correct">Тачан одговор je: {{ add1 }}-{{ add2 }}=<b>{{ add1 - add2 }}</b></p>
         		<br>
-        	</div>
+        	</div>        	
         </div>
         
 		<div class="bottom_box">   
         	<p>Успех: <b>{{ score }} / {{ played }}</b></p>
         	<br>		     
-			<div class="columns is-mobile">
-				<div class="column is-half has-text-left">
-        			<button class="button is-link is-small is-rounded" @click="resetGame">Из почетка</button>
+			<div class="row">
+				<div class="col-6 text-left">
+        			<button class="btn btn-info" @click="resetGame">Из почетка</button>
 				</div>
-				<div class="column is-half has-text-right">
-        			<button v-show="showresult==true"class="button is-link is-small is-rounded" @click="nextCalculation">Даље ></button>
+				<div class="col-6 text-right">
+        			<button v-show="showresult==true"class="btn btn-info" @click="nextCalculation">Даље ></button>
 				</div>
         	</div>
         </div>
@@ -41,7 +46,10 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
+
 export default {
+	components: { Swal },	
 	name: 'Oduzimanje_nivo1',
 	props: { 
 		prop_title: { String, default: "Одузимање"}, 
@@ -71,7 +79,19 @@ export default {
 		this.add_2_max = this.prop_max_2;
 		this.nextCalculation ();
 	},
-  	methods : {
+	watch: {
+		played: function (value) {
+			if (value==10) {
+				if (this.score==9 || this.score==10) {
+					Swal("Одлично", "Тачних " + this.score + " од " + this.played);
+				} else {
+					Swal("Пробај поново", "Тачних " + this.score + " од " + this.played);
+				}
+		        this.resetGame(); 
+		    }
+		}
+	}, 	
+  	methods: {
     	randomNumber : function(max) {
       		return (Math.floor(Math.random()*max)+1);
     	},

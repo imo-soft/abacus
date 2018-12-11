@@ -1,93 +1,74 @@
 <template>
-  <div id="nav-bar">
 
-    <nav id="nav-menu" class="navbar is-transparent" role="navigation">
- 
-      <div class="navbar-brand">
+  <nav class="navbar navbar-light navbar-expand-sm navbar-light navbar-jw fixed-top">
 
-        <router-link 
-          class="navbar-item"
-          :class="activeClass('Dashboard')" :to="{ name:'Dashboard' }">
-            <img src="/static/abacus.png" alt="Abacus">
-        </router-link>
+    <a class="navbar-brand" href="/">
+      <img src="/static/abacus.png" height="32px" class="d-inline-block align-top" alt="Abacus"> Abacus
+    </a>
 
-        <div class="navbar-burger burger" data-target="navMenubd-example">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      </div>
-      
-      <div id="navMenubd-example" class="navbar-menu">
-        <div class="navbar-start">
- 
-          <router-link class="navbar-item" :class="activeClass('Sabiranje')" :to="{ name:'Sabiranje' }">
-            Сабирање
-          </router-link>
-          <router-link class="navbar-item" :class="activeClass('Oduzimanje')" :to="{ name:'Oduzimanje' }">
-            Одузимање
-          </router-link>
-          <router-link class="navbar-item" :class="activeClass('About')" :to="{ name:'About' }">
-            О...
-          </router-link>
+    <div class="collapse navbar-collapse" id="navbarNav">
 
-        </div>
-      </div>
-      
-    </nav>
-    <br/> 
-  </div>
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+        <router-link class="nav-link" :class="activeClass('Sabiranje')" :to="{ name:'Sabiranje' }">Сабирање</router-link>
+      </li>       
+      <li class="nav-item">
+        <router-link class="nav-link" :class="activeClass('Oduzimanje')" :to="{ name:'Oduzimanje' }">Одузимање</router-link>
+      </li>      
+      <li class="nav-item">
+        <router-link class="nav-link" :class="activeClass('About')" :to="{ name:'About' }">О...</router-link>
+      </li>      
+    </ul>
+    </div>
+  </nav>
 </template>
 
-<script>
+<script type="text/javascript">
+
 export default {
   name: 'NavBar',
+  components: { },
+  
+  data () { 
+    return {
+    }
+  },
+  created () { 
+    // var currentRoute = this.$router;
+  },
+  watch: {
+    '$route' () {
+      $('#navbarNav').collapse('hide');
+    }   
+  },
   methods: {
     activeClass: function (...names) {
       for (let name of names) {
-        if (name == this.$route.name) {
-          // alert (name);    
-          return 'link-active';
-        }
+        if (name == this.$router.name)      
+          return 'router-link-active';
+        else
+          return 'active';
       }
-    }   
-  },
-  watch: {
-    // '$route' () {
-    //   $('navMenubd-example').collapse('hide');
-    // }
+    },
   }
 }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    // Get all "navbar-burger" elements
-    var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-    // Check if there are any nav burgers
-    if ($navbarBurgers.length > 0) {
-
-      // Add a click event on each of them
-      $navbarBurgers.forEach(function ($el) {
-        $el.addEventListener('click', function () {
-          // Get the target from the "data-target" attribute
-          var target = $el.dataset.target;
-          var $target = document.getElementById(target);
-          // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-          $el.classList.toggle('is-active');
-          $target.classList.toggle('is-active');
-        });
-      });
-    }
-  });
-
-  // document.getElementById("navMenubd-example").addEventListener ("click", toggleNav); function toggleNav() {
-  //         var nav = document.getElementById("nav-menu");
-  //         var className = nav.getAttribute("class");
-  //         if(className == "nav-right nav-menu") {
-  //             nav.className = "nav-right nav-menu is-active";
-  //         } else {
-  //             nav.className = "nav-right nav-menu";
-  //         }
-  // }
 </script>
+
+<style scoped>
+.router-link-active {
+  background-color: lightgray;
+  color: white;
+}
+</style>
+
+
+
+
+
+
+
