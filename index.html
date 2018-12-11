@@ -15,7 +15,8 @@
 
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">    
-
+    <link rel="manifest" href="/static/manifest.json">
+    
   </head>
   <body>
 
@@ -24,3 +25,12 @@
 
   </body>
 </html>
+
+<script>
+if('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker
+            .register('/static/sw.js')
+    });
+}
+</script>

@@ -1,7 +1,7 @@
 <template>
   <div id="nav-bar">
 
-    <nav class="navbar is-transparent" role="navigation">
+    <nav id="nav-menu" class="navbar is-transparent" role="navigation">
  
       <div class="navbar-brand">
 
@@ -52,32 +52,42 @@ export default {
         }
       }
     }   
-  }  
+  },
+  watch: {
+    // '$route' () {
+    //   $('navMenubd-example').collapse('hide');
+    // }
+  }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get all "navbar-burger" elements
+    var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-  // Get all "navbar-burger" elements
-  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    // Check if there are any nav burgers
+    if ($navbarBurgers.length > 0) {
 
-  // Check if there are any nav burgers
-  if ($navbarBurgers.length > 0) {
-
-    // Add a click event on each of them
-    $navbarBurgers.forEach(function ($el) {
-      $el.addEventListener('click', function () {
-
-        // Get the target from the "data-target" attribute
-        var target = $el.dataset.target;
-        var $target = document.getElementById(target);
-
-        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-        $el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-
+      // Add a click event on each of them
+      $navbarBurgers.forEach(function ($el) {
+        $el.addEventListener('click', function () {
+          // Get the target from the "data-target" attribute
+          var target = $el.dataset.target;
+          var $target = document.getElementById(target);
+          // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+          $el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+        });
       });
-    });
-  }
+    }
+  });
 
-});
+  // document.getElementById("navMenubd-example").addEventListener ("click", toggleNav); function toggleNav() {
+  //         var nav = document.getElementById("nav-menu");
+  //         var className = nav.getAttribute("class");
+  //         if(className == "nav-right nav-menu") {
+  //             nav.className = "nav-right nav-menu is-active";
+  //         } else {
+  //             nav.className = "nav-right nav-menu";
+  //         }
+  // }
 </script>

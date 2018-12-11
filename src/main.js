@@ -8,6 +8,11 @@ import NavBar from '@/components/NavBar'
 import 'bulma/css/bulma.css'
 import '@/assets/bulma_restyle.css'
 
+import runtime from 'serviceworker-webpack-plugin/lib/runtime'
+if ('serviceWorker' in navigator) {
+  runtime.register();
+}
+
 //Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('content')
 Vue.config.productionTip = false
 
