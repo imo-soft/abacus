@@ -27,17 +27,10 @@ export default {
   },  
   methods : {
     getVersion () {
-      // const fileName = "/static/version.txt";
-      // fetch(fileName)
-      //   .then(response => this.version = response.text())
-    
-      // var xmlhttp = new XMLHttpRequest();
-      // xmlhttp.open("GET", fileName, false);
-      //   xmlhttp.send();
-      //   if(xmlhttp.readyState === 4)
-      //     if (xmlhttp.status===200 || xmlhttp.status == 0) {
-      //       this.version = xmlhttp.responseText;
-      //     }
+      const fileName = "../static/version.txt";
+      fetch(fileName)
+        .then(response => response.text())
+        .then(text => this.version = text)
     }
   },
 }

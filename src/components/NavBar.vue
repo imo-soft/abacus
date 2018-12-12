@@ -15,10 +15,10 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item">
-        <router-link class="nav-link" :class="activeClass('Sabiranje')" :to="{ name:'Sabiranje' }">Сабирање</router-link>
+        <router-link class="nav-link" :class="activeClass('Add')" :to="{ name:'Add' }">Сабирање</router-link>
       </li>       
       <li class="nav-item">
-        <router-link class="nav-link" :class="activeClass('Oduzimanje')" :to="{ name:'Oduzimanje' }">Одузимање</router-link>
+        <router-link class="nav-link" :class="activeClass('Sub')" :to="{ name:'Sub' }">Одузимање</router-link>
       </li>      
       <li class="nav-item">
         <router-link class="nav-link" :class="activeClass('About')" :to="{ name:'About' }">О...</router-link>
