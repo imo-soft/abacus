@@ -1,4 +1,4 @@
-const cacheName = 'v1';
+const cacheName = 'abacus';
 
 // Call Install Event
 self.addEventListener('install', e => {

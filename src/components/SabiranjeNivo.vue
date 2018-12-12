@@ -20,7 +20,7 @@
 		</div>		
 
 		<div class="answer_box">
-        	<button v-show="answer != null && showresult==false" class="btn btn-info btn-sm" @click="getResult">Одговор</button>
+        	<button v-show="answer != null && showresult==false" class="btn btn-success" @click="getResult">Одговор</button>
 			<div v-show="showresult">
         		<i v-if="correct" class="far fa-check-circle fa-2x" style="color:blue"></i>
         		<i v-else class="far fa-times-circle fa-2x" style="color:red"></i>
@@ -88,10 +88,14 @@ export default {
 	},
 	watch: {
 		played: function (value) {
-			if (value==10) {
-				if (this.score==9 || this.score==10) {
+			if (value==5) {
+				if (this.score==4 || this.score==5) {
+	    			this.audio_filename = 'ok_' + this.randomNumber (1,4);
+	    			this.playSound();					
 					Swal("Одлично", "Тачних " + this.score + " од " + this.played);
 				} else {
+    				this.audio_filename = 'wrong_' + this.randomNumber (1,4);
+    				this.playSound();					
 					Swal("Пробај поново", "Тачних " + this.score + " од " + this.played);
 				}
 		        this.resetGame(); 
@@ -110,13 +114,9 @@ export default {
     		if (this.answer == this.add1 + this.add2) {
 				this.correct = true;
     			this.score ++;
-    			this.audio_filename = 'ok_' + this.randomNumber (1,4);
-    			this.playSound();
     		} else {
     		// incorrect answer
     			this.correct = false;
-    			this.audio_filename = 'wrong_' + this.randomNumber (1,4);
-    			this.playSound();
     		}    		
     	},
     	nextCalculation () {

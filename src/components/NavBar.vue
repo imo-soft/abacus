@@ -3,7 +3,7 @@
   <nav class="navbar navbar-light navbar-expand-sm navbar-light navbar-jw fixed-top">
 
     <a class="navbar-brand" href="/">
-      <img src="/static/abacus.png" height="32px" class="d-inline-block align-top" alt="Abacus"> Abacus
+      <img src="/static/abacus.png" height="32px" class="d-inline-block align-top" alt="Abacus"> Абакус
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
