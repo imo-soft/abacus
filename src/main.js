@@ -13,7 +13,6 @@ if ('serviceWorker' in navigator) {
 import Swal from 'sweetalert2';
 
 
-//Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('content')
 Vue.config.productionTip = false
 
 new Vue({

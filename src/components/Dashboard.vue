@@ -2,13 +2,13 @@
   <div class="is-fullhd overlay">
 
     <div>
-      <router-link :to="{ name:'Sabiranje' }">
+      <router-link :to="{ name:'Add' }">
         <button class="btn btn-info">Сабирање</button>
       </router-link>
     </div>
     <br>
     <div>
-      <router-link :to="{ name:'Oduzimanje' }">
+      <router-link :to="{ name:'Sub' }">
         <button class="btn btn-info">Одузимање</button>
       </router-link>    
     </div>
