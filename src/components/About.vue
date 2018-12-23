@@ -3,7 +3,7 @@
     <div>
       <b>Абакус</b> v{{ version }}<br>
       Аутор: Предраг Влајковић<br>
-      mailto: abacus@softwarepieces.com<br>
+      mailto: contact@softwarepieces.com<br>
       <br>
       Посвећено мом сину Огњену, са жељом да буде успешан математичар
     </div>
