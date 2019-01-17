@@ -2,8 +2,3 @@ language: node_js
 node_js:
   - "iojs"
   - "7"
-# Commands to be run before your environment runs.
-before_install:
-  - npm i -g
-# Commands you want to run that will verify your build.
-npm test
