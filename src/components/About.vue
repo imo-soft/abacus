@@ -20,18 +20,7 @@ export default {
   data () {
     return {
       title: "О нама",
-      version: "1.1"
-    }
-  },
-  mounted () {
-    this.getVersion();
-  },
-  methods : {
-    getVersion () {
-      const fileName = "../static/version.txt";
-      fetch(fileName)
-        .then(response => response.text())
-        .then(text => this.version = text)
+      version: "dev-8"
     }
   },
 }
