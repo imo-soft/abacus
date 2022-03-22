@@ -13,6 +13,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 
-/static/version.txt
+#/static/version.txt
 
 package-lock.json

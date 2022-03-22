@@ -1,15 +1,21 @@
 <template>
   <div class="about">
     <div>
-      <b>Абакус</b> v{{ version }}<br>
-      Аутор: Предраг Влајковић<br>
-      mailto: contact@softwarepieces.com<br>
-      <br>
-      Посвећено мом сину Огњену, са жељом да буде успешан математичар
+      <div>
+        <h2>Абакус</h2><br>
+      </div>
+      <div>
+        За ученике 1. и 2. разреда ОШ<br><br>
+      </div>
+      <div>
+        Аутор: Предраг Влајковић<br>
+        mailto: predrag.vlajkovic at gmail dot com<br><br>
+        Посвећено мом сину Огњену, са жељом да буде успешан математичар<br><br>
+      </div>
     </div>
     <br>
-    <img src="/static/poster.png" alt="Ognjen">    
-    <br>       
+    <img src="/static/poster.png" alt="Ognjen">
+    <br>
   </div>
 </template>
 
@@ -19,18 +25,7 @@ export default {
   data () {
     return {
       title: "О нама",
-      version: "1.1"
-    }
-  },
-  mounted () {
-    this.getVersion();
-  },  
-  methods : {
-    getVersion () {
-      const fileName = "../static/version.txt";
-      fetch(fileName)
-        .then(response => response.text())
-        .then(text => this.version = text)
+      version: "dev-9"
     }
   },
 }

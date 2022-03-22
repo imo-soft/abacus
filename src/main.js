@@ -19,11 +19,11 @@ new Vue({
   router,
   template: `
 	  <div id="app" class="container">
-	    <nav-bar></nav-bar>  
+	    <nav-bar></nav-bar>
 	    <router-view/>
 	  </div>
   `,
   components: {
     NavBar
   }
-}).$mount('#app') 
+}).$mount('#app')

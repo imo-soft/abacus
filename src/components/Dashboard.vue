@@ -10,7 +10,7 @@
     <div>
       <router-link :to="{ name:'Sub' }">
         <button class="btn btn-info">Одузимање</button>
-      </router-link>    
+      </router-link>
     </div>
 
     <img src="/static/icons-256.png" alt="Abacus">
@@ -20,7 +20,7 @@
 
 <script>
 import MobileDetect from 'mobile-detect';
-export default { 
+export default {
   name: 'Dashboard',
   data () {
     return {

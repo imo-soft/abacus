@@ -4,8 +4,8 @@
 
 Simple algebra for kids of age 6-7 on Serbian language (cyrilic).
 
-Dedicated to my 6 years old son Ognjen.
+Dedicated to my (then) 6 years old son Ognjen.
 
 I wish him to be good mathematician.
 
-Live app available at https://abacus.softwarepieces.com .
+Live app available at https://abacus.it-outsource.me .
