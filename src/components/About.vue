@@ -1,9 +1,10 @@
 <template>
   <div class="about">
     <div>
-      <b>Абакус</b><br>
+      <h2>Абакус</h2>
+      <br>
       Аутор: Предраг Влајковић<br>
-      mailto: contact@softwarepieces.com<br>
+      mailto: predrag.vlajkovic@gmail.com<br>
       <br>
       Посвећено мом сину Огњену, са жељом да буде успешан математичар
     </div>

@@ -10,7 +10,7 @@ body {
   color: #828282;
   background: #fff;
   padding-top: 70px;
-  background-color: WhiteSmoke;  
+  background-color: WhiteSmoke;
 }
 
 .fixed-top {
@@ -19,20 +19,20 @@ body {
   right: 0;
   left: 0;
   z-index: 1030;
-  background-color: #e6e6e6; 
+  background-color: #e6e6e6;
   padding-bottom: 5px;
 }
 
 .container {
 	text-align: center;
-	background-image: url("/static/math_sheet.png");	
+	background-image: url("/static/math_sheet.png");
     background-repeat: repeat;
     overflow: auto;
     position:fixed;
     top: 0;
     left: 0;
 	bottom: 0;
-	right: 0;    
+	right: 0;
     height: 100%;
   	padding-top: 80px;
 }
@@ -81,7 +81,7 @@ body {
 
 .error-container {
   display: flex;
-  align-items: center;  
+  align-items: center;
   justify-content: center;
   min-height: 600px;
 }
@@ -123,7 +123,7 @@ h1, h2, h3, h4, h5, h6, figure {
   box-shadow: none;
   background: transparent;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  height: 30px; 
+  height: 30px;
   font-size: 14px;
   margin-bottom: 0px;
 }
@@ -140,26 +140,26 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .main_container {
-	width: 100%; 
-	text-align: center;	
+	width: 100%;
+	text-align: center;
 }
 
 .math_box {
-	text-align: center;	
-	height: 35px; 
+	text-align: center;
+	height: 35px;
 }
 
 .answer_box {
-	height: 60px; 
+	height: 60px;
 }
 
 .scoreboard_box {
-	height: 50px; 
-	background: red;	
+	height: 50px;
+	background: red;
 }
 
-.bottom_box {	
-    height: 20px;  
+.bottom_box {
+    height: 20px;
 }
 
 .math_box-item {
@@ -190,7 +190,7 @@ h1, h2, h3, h4, h5, h6, figure {
 
 .btn.btn-sm {
   padding: 3px 6px !important;
-  font-size: 12px;   
+  font-size: 12px;
 }
 
 .btn.btn-xs {

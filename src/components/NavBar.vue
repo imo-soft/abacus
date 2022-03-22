@@ -16,13 +16,13 @@
 
       <li class="nav-item">
         <router-link class="nav-link" :class="activeClass('Add')" :to="{ name:'Add' }">Сабирање</router-link>
-      </li>       
+      </li>
       <li class="nav-item">
         <router-link class="nav-link" :class="activeClass('Sub')" :to="{ name:'Sub' }">Одузимање</router-link>
-      </li>      
+      </li>
       <li class="nav-item">
         <router-link class="nav-link" :class="activeClass('About')" :to="{ name:'About' }">О...</router-link>
-      </li>      
+      </li>
     </ul>
     </div>
   </nav>
@@ -33,23 +33,23 @@
 export default {
   name: 'NavBar',
   components: { },
-  
-  data () { 
+
+  data () {
     return {
     }
   },
-  created () { 
+  created () {
     // var currentRoute = this.$router;
   },
   watch: {
     '$route' () {
       $('#navbarNav').collapse('hide');
-    }   
+    }
   },
   methods: {
     activeClass: function (...names) {
       for (let name of names) {
-        if (name == this.$router.name)      
+        if (name == this.$router.name)
           return 'router-link-active';
         else
           return 'active';
