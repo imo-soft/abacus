@@ -8,8 +8,8 @@
       Посвећено мом сину Огњену, са жељом да буде успешан математичар
     </div>
     <br>
-    <img src="/static/poster.png" alt="Ognjen">    
-    <br>       
+    <img src="/static/poster.png" alt="Ognjen">
+    <br>
   </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
   },
   mounted () {
     this.getVersion();
-  },  
+  },
   methods : {
     getVersion () {
       const fileName = "../static/version.txt";
