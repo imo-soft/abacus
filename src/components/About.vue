@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <div>
-      <b>Абакус</b> v{{ version }}<br>
+      <b>Абакус</b><br>
       Аутор: Предраг Влајковић<br>
       mailto: contact@softwarepieces.com<br>
       <br>
