@@ -37,7 +37,7 @@
         			<button class="btn btn-info" @click="resetGame">Из почетка</button>
 				</div>
 				<div class="col-6 text-right">
-        			<button v-show="showresult==true"class="btn btn-info" @click="nextCalculation">Даље ></button>
+        			<button v-show="showresult==true" class="btn btn-info" @click="nextCalculation">Даље ></button>
 				</div>
         	</div>
         </div>
@@ -49,7 +49,7 @@
 import Swal from 'sweetalert2'
 
 export default {
-	components: { Swal }
+	components: { Swal },
 	name: 'Oduzimanje_nivo1',
 	props: {
 		prop_title: { String, default: "Одузимање"},
@@ -72,7 +72,7 @@ export default {
 		  played: 0,
 		  audio_filename: ''
 		}
-	}
+	},
 	mounted () {
 		this.title = this.prop_title;
 		this.add_1_max = this.prop_max_1;
