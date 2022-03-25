@@ -16,12 +16,13 @@
     <img src="/static/icons-256.png" alt="Abacus">
 
   </div>
+
 </template>
 
 <script>
-import MobileDetect from 'mobile-detect';
+import MobileDetect from "mobile-detect";
 export default {
-  name: 'Dashboard',
+  name: "Dashboard",
   data () {
     return {
       title: "Добродошли",
@@ -31,7 +32,7 @@ export default {
   },
   mounted () {
     var md = new MobileDetect(navigator.userAgent);
-    if (md.mobile()==true || md.is('AndroidOS') || md.is('iPhone')) {
+    if (md.mobile()==true || md.is("AndroidOS") || md.is("iPhone")) {
       this.desktop = false;
     }
   }

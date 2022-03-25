@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  name: 'Sabiranje',
+  name: "Sabiranje",
   data () {
     return {
       title: "Сабирање"

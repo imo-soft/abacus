@@ -1,0 +1,20 @@
+{
+    "rules": {
+      "quotes": ["error", "double"]
+    },
+    "overrides": [
+        {
+            "files": ["src/views/**/*.vue"],
+            "rules": {
+                "vue/multi-word-component-names": 0,
+                "no-mixed-spaces-and-tabs": 0
+            }
+        }
+    ],
+    "parser": "vue-eslint-parser",
+    "extends": ["plugin:vue/base"],
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    }
+  }

@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: 'Oduzimanje',
+  name: "Oduzimanje",
   data () {
     return {
       title: "Одузимање"
