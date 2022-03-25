@@ -46,11 +46,11 @@
 </template>
 
 <script>
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2"
 
 export default {
 	components: { Swal },
-	name: 'SabiranjeNivo',
+	name: "SabiranjeNivo",
 	props: {
 		prop_title: { String, default: "Сабирање" },
 		prop_min_1: { Number },
@@ -75,7 +75,7 @@ export default {
 		  score: 0,
 		  text_score: null,
 		  played: 0,
-		  audio_filename: ''
+		  audio_filename: ""
 		}
 	},
 	mounted () {
@@ -90,11 +90,11 @@ export default {
 		played: function (value) {
 			if (value==5) {
 				if (this.score==4 || this.score==5) {
-	    			this.audio_filename = 'ok_' + this.randomNumber (1,4);
+	    			this.audio_filename = "ok_" + this.randomNumber (1,4);
 	    			this.playSound();
 					Swal("Одлично", "Тачних " + this.score + " од " + this.played);
 				} else {
-    				this.audio_filename = 'wrong_' + this.randomNumber (1,4);
+    				this.audio_filename = "wrong_" + this.randomNumber (1,4);
     				this.playSound();
 					Swal("Пробај поново", "Тачних " + this.score + " од " + this.played);
 				}
@@ -139,7 +139,7 @@ export default {
     		this.nextCalculation();
     	},
 	    playSound () {
-	        var audio = new Audio('/static/audio/'+this.audio_filename+'.mp3');
+	        var audio = new Audio("/static/audio/"+this.audio_filename+".mp3");
 	        audio.play();
     	}
 	}

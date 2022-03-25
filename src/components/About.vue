@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: 'About',
+  name: "About",
   data () {
     return {
       title: "О нама",

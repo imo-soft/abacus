@@ -31,7 +31,7 @@
 <script type="text/javascript">
 
 export default {
-  name: 'NavBar',
+  name: "NavBar",
   components: { },
 
   data () {
@@ -42,17 +42,17 @@ export default {
     // var currentRoute = this.$router;
   },
   watch: {
-    '$route' () {
-      $('#navbarNav').collapse('hide');
+    "$route" () {
+      $("#navbarNav").collapse("hide");
     }
   },
   methods: {
     activeClass: function (...names) {
       for (let name of names) {
         if (name == this.$router.name)
-          return 'router-link-active';
+          return "router-link-active";
         else
-          return 'active';
+          return "active";
       }
     },
   }
