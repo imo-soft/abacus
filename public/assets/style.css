@@ -15,7 +15,7 @@ body {
   padding-top: 60px;
   background-image: url("/assets/math_sheet.png");
   background-repeat: repeat;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 .navbar {
