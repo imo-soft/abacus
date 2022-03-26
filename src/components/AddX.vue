@@ -3,22 +3,34 @@
 
 		<h4>{{ title }}</h4>
 
-		<div class="math_box text-center">
+		<div class="math_box">
 			<div class="form-group row">
-				<div class="col-3">
+				<div class="col-3"></div>
+				<div class="col-6">
 					<input class="form-control" readonly="readonly" type="number" v-model="add1">
-				</div>
-				<div class="col-1">+</div>
-				<div class="col-3">
+					<b>+</b><br>
 					<input class="form-control" ref="answer" type="number"  maxlength="4" min="1" max="20" v-model="answer">
-				</div>
-				<div class="col-1">=</div>
-				<div class="col-3">
+					<b>=</b><br>
 					<input class="form-control" readonly="readonly" type="number" v-model="add2">
 				</div>
+				<div class="col-3"></div>
 			</div>
 		</div>
-
+		<hr>
+		<div class="bottom_box">
+			<div>
+        		Успех: <b>{{ score }} / {{ played }}</b>
+        	</div>
+			<div class="row">
+				<div class="col-6 text-centered">
+        			<button class="btn btn-info" @click="resetGame">Из почетка</button>
+				</div>
+				<div class="col-6 text-centered">
+        			<button v-show="showresult==true" class="btn btn-info" @click="nextCalculation">Даље ></button>
+				</div>
+        	</div>
+        </div>
+		<hr>
 		<div class="answer_box">
         	<button v-show="answer != null && showresult==false" class="btn btn-success" @click="getResult">Одговор</button>
 			<div v-show="showresult">
@@ -29,18 +41,7 @@
         	</div>
         </div>
 
-		<div class="bottom_box">
-        	<p>Успех: <b>{{ score }} / {{ played }}</b></p>
-        	<br>
-			<div class="row">
-				<div class="col-6 text-centered">
-        			<button class="btn btn-info" @click="resetGame">Из почетка</button>
-				</div>
-				<div class="col-6 text-centered">
-        			<button v-show="showresult==true" class="btn btn-info" @click="nextCalculation">Даље ></button>
-				</div>
-        	</div>
-        </div>
+
 
 	</div>
 </template>
