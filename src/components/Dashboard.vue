@@ -13,7 +13,7 @@
       </router-link>
     </div> -->
 
-    <img src="../..//static/icons-256.png" alt="Abacus">
+    <img src="/assets/icons-512.png" alt="Abacus">
     <router-view></router-view>
   </div>
 </template>
