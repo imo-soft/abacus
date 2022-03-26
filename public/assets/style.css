@@ -12,7 +12,7 @@ body {
   margin: auto;
   background: whitesmoke;
   text-align: center;
-  padding-top: 60px;
+  padding-top: 10px;
   background-image: url("/assets/math_sheet.png");
   background-repeat: repeat;
   min-height: 80vh;
@@ -125,7 +125,7 @@ p {
 h1, h2, h3, h4, h5, h6, figure {
   color: #000;
   font-weight: 400;
-  margin: 0 0 10px 0;
+  margin: 0px;
 }
 
 .control-label {
@@ -140,19 +140,19 @@ h1, h2, h3, h4, h5, h6, figure {
 
 .math_box {
 	text-align: center;
-	min-height: 100px;
-  margin: 5px;
+	min-height: 30px;
+  /* margin: 5px; */
 }
 
 .answer_box {
   text-align: center;
-	height: 60px;
-  margin: 0 20px;
+	min-height: 30px;
+  /* margin: 0 20px; */
 }
 
 .bottom_box {
-    min-height: 60px;
-    margin: 10px;
+    min-height: 30px;
+    /* margin: 10px; */
 }
 
 /* Buttons */
