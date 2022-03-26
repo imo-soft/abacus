@@ -140,26 +140,20 @@ h1, h2, h3, h4, h5, h6, figure {
 
 .math_box {
 	text-align: center;
-	height: 35px;
+	min-height: 100px;
+  margin: 5px;
 }
 
 .answer_box {
+  text-align: center;
 	height: 60px;
-}
-
-.scoreboard_box {
-	height: 50px;
-	background: red;
+  margin: 0 20px;
 }
 
 .bottom_box {
-    height: 20px;
+    min-height: 60px;
+    margin: 10px;
 }
-
-.math_box-item {
-	margin: 0 0px;
-}
-
 
 /* Buttons */
 
@@ -174,6 +168,7 @@ h1, h2, h3, h4, h5, h6, figure {
   -o-transition: 0.5s;
   transition: 0.5s;
   padding: 6px 10px;
+  margin-bottom: 10px;
 }
 
 .btn-info {
