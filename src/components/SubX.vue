@@ -16,7 +16,7 @@
 				<div class="col-3"></div>
 			</div>
 		</div>
-		<hr>
+		
 		<div class="bottom_box">
         	<p>Успех: <b>{{ score }} / {{ played }}</b></p>
         	<br>
@@ -29,7 +29,7 @@
 				</div>
         	</div>
         </div>
-		<hr>
+		
 		<div class="answer_box">
         	<button v-show="answer != null && showresult==false" class="btn btn-success" @click="getResult">Одговор</button>
 			<div v-show="showresult">
