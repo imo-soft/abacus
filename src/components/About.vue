@@ -14,7 +14,7 @@
       </div>
     </div>
     <br>
-    <img src="/static/poster.png" alt="Ognjen">
+    <img src="/assets/poster.png" alt="Ognjen">
     <br>
   </div>
 </template>

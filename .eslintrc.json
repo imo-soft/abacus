@@ -1,7 +1,4 @@
 {
-    "rules": {
-      "quotes": ["error", "double"]
-    },
     "overrides": [
         {
             "files": ["src/views/**/*.vue"],

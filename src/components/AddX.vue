@@ -24,7 +24,7 @@
 			<div v-show="showresult">
         		<i v-if="correct" class="far fa-check-circle fa-2x" style="color:blue"></i>
         		<i v-else class="far fa-times-circle fa-2x" style="color:red"></i>
-        		<p v-show="!correct">Тачан одговор je: {{ add1 }}+{{ add2 }}=<b>{{ add1 + add2 }}</b></p>
+        		<p v-show="!correct">Тачан одговор je: {{ add2 }}-{{ add1 }}=<b>{{ add2 - add1 }}</b></p>
         		<br>
         	</div>
         </div>
@@ -49,14 +49,13 @@
 import Swal from "sweetalert2"
 
 export default {
-	components: { Swal },
 	name: "SabiranjeNivo",
 	props: {
 		prop_title: { String, default: "Сабирање" },
-		prop_min_1: { Number },
-		prop_max_1: { Number },
-		prop_min_2: { Number },
-		prop_max_2: { Number }
+		prop_1_min: { Number },
+		prop_1_max: { Number },
+		prop_2_min: { Number },
+		prop_2_max: { Number }
 		},
 	data () {
 		return {
@@ -75,16 +74,17 @@ export default {
 		  score: 0,
 		  text_score: null,
 		  played: 0,
-		  audio_filename: ""
+		  audio_filename: "",
+		  rnd: 0
 		}
 	},
 	mounted () {
 		this.title = this.prop_title;
-		this.add_1_min = this.prop_min_1;
-		this.add_1_max = this.prop_max_1;
-		this.add_2_min = this.prop_min_2;
-		this.add_2_max = this.prop_max_2;
-		this.nextCalculation ();
+		this.add_1_min = parseInt(this.prop_1_min);
+		this.add_1_max = parseInt(this.prop_1_max);
+		this.add_2_min = parseInt(this.prop_2_min);
+		this.add_2_max = parseInt(this.prop_2_max);
+		this.nextCalculation (this.prop_1_min, this.prop_1_max, this.prop_2_min, this.prop_2_max);
 	},
 	watch: {
 		played: function (value) {
@@ -92,11 +92,11 @@ export default {
 				if (this.score==4 || this.score==5) {
 	    			this.audio_filename = "ok_" + this.randomNumber (1,4);
 	    			this.playSound();
-					Swal("Одлично", "Тачних " + this.score + " од " + this.played);
+					new Swal("Одлично", "Тачних " + this.score + " од " + this.played);
 				} else {
     				this.audio_filename = "wrong_" + this.randomNumber (1,4);
     				this.playSound();
-					Swal("Пробај поново", "Тачних " + this.score + " од " + this.played);
+					new Swal("Пробај поново", "Тачних " + this.score + " од " + this.played);
 				}
 		        this.resetGame();
 		    }
@@ -104,19 +104,23 @@ export default {
 	},
   	methods : {
     	randomNumber : function(min, max) {
-      		return Math.floor(Math.random() * (max - min + 1)) + min;
+			this.rnd = Math.floor(Math.random() * (max - min + 1)) + min;
+			while (this.rnd > max)
+				this.rnd = Math.floor(Math.random() * (max - min + 1)) + min;
+			return this.rnd
     	},
     	getResult () {
     		this.played++;
     		this.answered = true;
     		this.showresult = true;
     		// correct answer
-    		if (this.answer == this.add2 - this.add1) {
+    		if (this.answer == parseInt(this.add2) - parseInt(this.add1)) {
 				this.correct = true;
     			this.score ++;
     		} else {
     		// incorrect answer
     			this.correct = false;
+				// this.answer= parseInt(this.add2) - parseInt(this.add1);
     		}
     	},
     	nextCalculation () {
@@ -139,7 +143,7 @@ export default {
     		this.nextCalculation();
     	},
 	    playSound () {
-	        var audio = new Audio("/static/audio/"+this.audio_filename+".mp3");
+	        var audio = new Audio("/audio/"+this.audio_filename+".mp3");
 	        audio.play();
     	}
   	}

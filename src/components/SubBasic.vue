@@ -49,7 +49,6 @@
 import Swal from "sweetalert2"
 
 export default {
-	components: { Swal },
 	name: "Oduzimanje_nivo1",
 	props: {
 		prop_title: { String, default: "Одузимање"},
@@ -75,8 +74,8 @@ export default {
 	},
 	mounted () {
 		this.title = this.prop_title;
-		this.add_1_max = this.prop_max_1;
-		this.add_2_max = this.prop_max_2;
+		this.add_1_max = parseInt(this.prop_max_1);
+		this.add_2_max = parseInt(this.prop_max_2);
 		this.nextCalculation ();
 	},
 	watch: {
@@ -85,11 +84,11 @@ export default {
 				if (this.score==4 || this.score==5) {
     				this.audio_filename = "ok_" + this.randomNumber (5);
     				this.playSound();
-					Swal("Одлично", "Тачних " + this.score + " од " + this.played);
+					new Swal("Одлично", "Тачних " + this.score + " од " + this.played);
 				} else {
     				this.audio_filename = "wrong_" + this.randomNumber (5);
     				this.playSound();
-					Swal("Пробај поново", "Тачних " + this.score + " од " + this.played);
+					new Swal("Пробај поново", "Тачних " + this.score + " од " + this.played);
 				}
 		        this.resetGame();
 		    }
@@ -135,7 +134,7 @@ export default {
     		this.nextCalculation();
     	},
 	    playSound () {
-	        var audio = new Audio("/static/audio/"+this.audio_filename+".mp3");
+	        var audio = new Audio("/audio/"+this.audio_filename+".mp3");
 	        audio.play();
     	}
   	}
