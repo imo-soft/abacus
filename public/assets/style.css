@@ -1,13 +1,11 @@
 * {
   box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 
 body {
-  margin: 0px;
-  padding: 0px;
   color: black;
-  background: #fff;
-  background-color: WhiteSmoke;
 }
 
 .main-container {
@@ -15,30 +13,12 @@ body {
   background: whitesmoke;
   text-align: center;
   padding-top: 60px;
-}
-
-.container {
-	text-align: center;
-}
-
-.container-center {
-  position: relative;
-}
-
-.center {
-  position: relative;
-  display: block;
-  text-align: center;
-}
-
-.small-container {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  background-image: url("/assets/math_sheet.png");
+  background-repeat: repeat;
+  min-height: 100vh;
 }
 
 .navbar {
-  color: white;
-  background-color: rgb(66, 64, 64);
   padding: 0px;
   margin: 0px;
   display: flex;
@@ -48,43 +28,36 @@ body {
   right: 0;
   left: 0;
   align-items: center;
+  font-size: 1.3rem;
+  flex-direction: column;
 }
 
-.brand-title a {
-  font-size: 2rem;
-  margin: .5rem;
-  padding-right: 10;
-  color: white;
+.navbar-brand {
+  font-size: 1.6rem;
 }
 
-.brand-title a:hover {
-  text-decoration: none;
-}
-
-.navbar-links {
+.nav-link {
   text-align: left;
 }
 
-.navbar-links ul {
+.nav-link ul {
   display: flex;
   margin: 0;
   padding: 0;
 }
 
-.navbar-links li {
+.nav-link li {
   list-style: none;
-  color: white;
   font-weight:bold;
 }
 
-.navbar-links li a {
+.nav-link li a {
   text-decoration: none;
-  padding: 1rem;
+  padding: 2rem;
   display: block;
-  color: white;
 }
 
-.mobile-nav-toggle {
+.navbar-togler {
   position: absolute;
   top: .75rem;
   right: 1rem;
@@ -95,113 +68,64 @@ body {
   height: 21px;
 }
 
-.mobile-nav-toggle .bar {
+.navbar-togler-icon .bar {
   height: 3px;
   width: 100%;
-  background-color: white;
-  border-radius: 10px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
   .navbar {
       flex-direction: column;
       align-items: flex-start;
   }
-
-  .mobile-nav-toggle  {
+  .navbar-toggler  {
       display: flex;
   }
-
-  .navbar-links {
+  .nav-link {
       display: none;
       width: 100%;
   }
-
-  .navbar-links ul {
+  .nav-link ul {
       width: 100%;
       flex-direction: column;
   }
-
-  .navbar-links ul li {
+  .nav-link li {
+      text-align: left;
+  }
+  .nav-link ul li {
       text-align: center;
   }
-
-  .navbar-links ul li a {
+  .nav-link ul li a {
       padding: .5rem 1rem;
   }
-
-  .navbar-links.active {
+  .nav-link.active {
       display: flex;
   }
-}
-
-.togle-button {
-  position: absolute;
-  display: flex;
-}
-
-.togle-button .bar {
-  position: absolute;
-  display: flex;
-}
-
-.divider {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-}
-
-.error-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 600px;
-}
-
-#page {
-  position: relative;
-  overflow-x: hidden;
-  width: 100%;
-  height: 100%;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-}
-
-/* a {
-  color: dimgray;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-}*/
-a:hover, a:active, a:focus {
-  /* color: black;
-  outline: none; */
-  text-decoration: none;
+  .navbar.expanded {
+    background-color: gray;
+  }
+  .navbar.expanded .navbar-collapse {
+    background-color: gray;
+  }
+  .navbar.expanded .navbar-toggler-icon{
+    color: black;
+  }
+  .navbar.expanded h2{
+    color: black;
+  }
+  .navbar.expanded #navbarToggle>ul>li>a{
+    color: black;
+  }
 }
 
 p {
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 h1, h2, h3, h4, h5, h6, figure {
   color: #000;
   font-weight: 400;
   margin: 0 0 10px 0;
-}
-
-.form-control {
-  box-shadow: none;
-  background: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  height: 30px;
-  font-size: 14px;
-  margin-bottom: 0px;
-}
-
-.form-control:active, .form-control:focus {
-  outline: none;
-  box-shadow: none;
-  border-color: #52d3aa;
 }
 
 .control-label {
