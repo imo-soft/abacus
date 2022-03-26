@@ -7,63 +7,62 @@
 			<div class="form-group row">
 				<div class="col-3"></div>
 				<div class="col-6">
-					<input class="form-control" readonly="readonly" type="number" v-model="add1">
-					<b>-</b><br>
-					<input class="form-control" ref="answer" type="number"  maxlength="4" min="1" max="20" v-model="answer">
+					<input class="form-control" readonly="readonly" type="number" v-model="mul1">
+					<b>*</b><br>
+					<input class="form-control" readonly="readonly" type="number" v-model="mul2">
 					<b>=</b><br>
-					<input class="form-control" readonly="readonly" type="number" v-model="add2">
+					<input class="form-control" ref="answer" type="number"  maxlength="4" min="1" max="20" v-model="answer">
 				</div>
 				<div class="col-3"></div>
 			</div>
 		</div>
-
 		<div class="bottom_box">
-        	<p>Успех: <b>{{ score }} / {{ played }}</b></p>
-        	<br>
+			<div>
+        		Успех: <b>{{ score }} / {{ played }}</b>
+			</div>
 			<div class="row">
-				<div class="col-6 text-centered">
+				<div class="col-6">
         			<button class="btn btn-info" @click="resetGame">Из почетка</button>
 				</div>
-				<div class="col-6 text-centered">
+				<div class="col-6">
         			<button v-show="showresult==true" class="btn btn-info" @click="nextCalculation">Даље ></button>
 				</div>
         	</div>
         </div>
-
 		<div class="answer_box">
-        	<button v-show="answer != null && showresult==false" class="btn btn-success" @click="getResult">Одговор</button>
-			<div v-show="showresult">
-        		<i v-if="correct" class="far fa-check-circle fa-2x" style="color:blue"></i>
-        		<i v-else class="far fa-times-circle fa-2x" style="color:red"></i>
-        		<p v-show="!correct">Тачан одговор je: {{ add1 }}-{{ add2 }}=<b>{{ add1 - add2 }}</b></p>
-        		<br>
-        	</div>
+			<button v-show="answer != null && showresult==false" class="btn btn-success" @click="getResult">Одговор</button>
+			<div v-show="showresult" style="min-heigth: 10px;">
+				<i v-if="correct" class="far fa-check-circle fa-2x" style="color:blue"></i>
+				<i v-else class="far fa-times-circle fa-2x" style="color:red"></i>
+				<p v-show="!correct">Тачан одговор je: {{ mul1 }}*{{ mul2 }}=<b>{{ mul1 * mul2 }}</b></p>
+			</div>
         </div>
+
 	</div>
 </template>
 
 <script>
-import Swal from "sweetalert2"
+import Swal from "sweetalert2";
 
 export default {
 	name: "SabiranjeNivo",
 	props: {
 		prop_title: { String, default: "Сабирање" },
-		prop_min_1: { Number },
-		prop_max_1: { Number },
-		prop_min_2: { Number },
-		prop_max_2: { Number }
+		prop_1_min: { Number },
+		prop_1_max: { Number },
+		prop_2_min: { Number },
+		prop_2_max: { Number }
 		},
 	data () {
 		return {
 		  title: null,
-		  add_1_min: 0,
-		  add_1_max: 0,
-		  add_2_min: 0,
-		  add_2_max: 0,
+		  mul_1_min: 0,
+		  mul_1_max: 0,
+		  mul_2_min: 0,
+		  mul_2_max: 0,
 		  add: null,
-		  add1: null,
-		  add2: null,
+		  mul1: null,
+		  mul2: null,
 		  answer: null,
 		  answered: false,
 		  correct: false,
@@ -71,16 +70,17 @@ export default {
 		  score: 0,
 		  text_score: null,
 		  played: 0,
-		  audio_filename: ""
+		  audio_filename: "",
+		  rnd: 0
 		}
 	},
 	mounted () {
 		this.title = this.prop_title;
-		this.add_1_min = parseInt(this.prop_min_1);
-		this.add_1_max = parseInt(this.prop_max_1);
-		this.add_2_min = parseInt(this.prop_min_2);
-		this.add_2_max = parseInt(this.prop_max_2);
-		this.nextCalculation ();
+		this.mul_1_min = parseInt(this.prop_1_min);
+		this.mul_1_max = parseInt(this.prop_1_max);
+		this.mul_2_min = parseInt(this.prop_2_min);
+		this.mul_2_max = parseInt(this.prop_2_max);
+		this.nextCalculation (this.prop_1_min, this.prop_1_max, this.prop_2_min, this.prop_2_max);
 	},
 	watch: {
 		played: function (value) {
@@ -100,29 +100,29 @@ export default {
 	},
   	methods : {
     	randomNumber : function(min, max) {
-      		return Math.floor(Math.random() * (max - min + 1)) + min;
+			this.rnd = Math.floor(Math.random() * (max - min + 1)) + min;
+			while (this.rnd > max)
+				this.rnd = Math.floor(Math.random() * (max - min + 1)) + min;
+			return this.rnd
     	},
     	getResult () {
     		this.played++;
     		this.answered = true;
     		this.showresult = true;
     		// correct answer
-    		if (this.answer == this.add1 - this.add2) {
+    		if (this.answer == parseInt(this.mul1) * parseInt(this.mul2)) {
 				this.correct = true;
     			this.score ++;
     		} else {
     		// incorrect answer
     			this.correct = false;
+				// this.answer= parseInt(this.mul1) + parseInt(this.mul2);
     		}
     	},
     	nextCalculation () {
-			this.add1 = this.randomNumber (this.add_1_min, this.add_1_max);
-			this.add2 = this.randomNumber (this.add_2_min, this.add_2_max);
-			if (this.add2 > this.add1) {
-				this.add = this.add2
-				this.add2 = this.add1
-				this.add1 = this.add
-			}
+			// console.log (this.mul_1_min, this.mul_1_max, this.mul_2_min, this.mul_2_max)
+			this.mul1 = this.randomNumber (this.mul_1_min, this.mul_1_max);
+			this.mul2 = this.randomNumber (this.mul_2_min, this.mul_2_max);
 			this.add = null;
 			this.answer = null;
 			this.answered = false;
@@ -138,6 +138,6 @@ export default {
 	        var audio = new Audio("/audio/"+this.audio_filename+".mp3");
 	        audio.play();
     	}
-	}
+  	}
 }
 </script>
