@@ -7,11 +7,11 @@
 			<div class="form-group row">
 				<div class="col-3"></div>
 				<div class="col-6">
-					<input class="form-control" readonly="readonly" type="number" v-model="mul1">
-					<b>*</b><br>
+					<input class="form-control" readonly="readonly" type="number" v-model="result">
+					<b>:</b><br>
 					<input class="form-control" ref="answer" type="number"  maxlength="4" min="1" max="20" v-model="answer">
 					<b>=</b><br>
-					<input class="form-control" readonly="readonly" type="number" v-model="result">
+					<input class="form-control" readonly="readonly" type="number" v-model="mul1">
 				</div>
 				<div class="col-3"></div>
 			</div>
@@ -34,7 +34,7 @@
 			<div v-show="showresult" style="min-heigth: 10px;">
 				<i v-if="correct" class="far fa-check-circle fa-2x" style="color:blue"></i>
 				<i v-else class="far fa-times-circle fa-2x" style="color:red"></i>
-				<p v-show="!correct">Тачан одговор je: {{ result }}:{{ mul1 }}=<b>{{ mul2 }}</b></p>
+				<p v-show="!correct">Тачан одговор je: {{ result }}:{{ mul1 }}=<b>{{ result / mul1 }}</b></p>
 			</div>
         </div>
 
@@ -55,24 +55,24 @@ export default {
 		},
 	data () {
 		return {
-			title: null,
-			mul_1_min: 0,
-			mul_1_max: 0,
-			mul_2_min: 0,
-			mul_2_max: 0,
-			result: 0,
-			add: null,
-			mul1: null,
-			mul2: null,
-			answer: null,
-			answered: false,
-			correct: false,
-			showresult: false,
-			score: 0,
-			text_score: null,
-			played: 0,
-			audio_filename: "",
-			rnd: 0
+		  title: null,
+		  mul_1_min: 0,
+		  mul_1_max: 0,
+		  mul_2_min: 0,
+		  mul_2_max: 0,
+		  result: 0,
+		  add: null,
+		  mul1: null,
+		  mul2: null,
+		  answer: null,
+		  answered: false,
+		  correct: false,
+		  showresult: false,
+		  score: 0,
+		  text_score: null,
+		  played: 0,
+		  audio_filename: "",
+		  rnd: 0
 		}
 	},
 	mounted () {
@@ -122,7 +122,7 @@ export default {
     	nextCalculation () {
 			this.mul1 = this.randomNumber (this.mul_1_min, this.mul_1_max);
 			this.mul2 = this.randomNumber (this.mul_2_min, this.mul_2_max);
-			this.result = this.mul1 * this.mul2;
+			this.result = this.mul1 * this.mul2
 			this.add = null;
 			this.answer = null;
 			this.answered = false;

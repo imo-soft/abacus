@@ -34,7 +34,7 @@
 			<div v-show="showresult" style="min-heigth: 10px;">
 				<i v-if="correct" class="far fa-check-circle fa-2x" style="color:blue"></i>
 				<i v-else class="far fa-times-circle fa-2x" style="color:red"></i>
-				<p v-show="!correct">Тачан одговор je: {{ mul1 }}*{{ mul2 }}=<b>{{ mul1 * mul2 }}</b></p>
+				<p v-show="!correct">Тачан одговор je: {{ mul1 }}*{{ mul2 }}=<b>{{ result }}</b></p>
 			</div>
         </div>
 
@@ -60,6 +60,7 @@ export default {
 		  mul_1_max: 0,
 		  mul_2_min: 0,
 		  mul_2_max: 0,
+		  result: 0,
 		  add: null,
 		  mul1: null,
 		  mul2: null,
@@ -110,19 +111,19 @@ export default {
     		this.answered = true;
     		this.showresult = true;
     		// correct answer
-    		if (this.answer == parseInt(this.mul1) * parseInt(this.mul2)) {
+    		if (parseInt(this.answer) == this.result) {
 				this.correct = true;
     			this.score ++;
     		} else {
     		// incorrect answer
     			this.correct = false;
-				// this.answer= parseInt(this.mul1) + parseInt(this.mul2);
     		}
     	},
     	nextCalculation () {
 			// console.log (this.mul_1_min, this.mul_1_max, this.mul_2_min, this.mul_2_max)
 			this.mul1 = this.randomNumber (this.mul_1_min, this.mul_1_max);
 			this.mul2 = this.randomNumber (this.mul_2_min, this.mul_2_max);
+			this.result = this.mul1 * this.mul2
 			this.add = null;
 			this.answer = null;
 			this.answered = false;

@@ -16,8 +16,8 @@ import MulBasic from "@/components/MulBasic"
 import MulX from "@/components/MulX"
 
 import Div from "@/components/Div"
-// import DivBasic from "@/components/DivBasic"
-// import DivX from "@/components/DivX"
+import DivBasic from "@/components/DivBasic"
+import DivX from "@/components/DivX"
 
 const routes = [
 	{ path: "", name: "Dashboard", component: Dashboard },
@@ -36,8 +36,8 @@ const routes = [
 	{ path: "/mul_with_x", name: "MulX", component: MulX, props: true },
 
 	{ path: "/div", name: "Div", component: Div },
-	// { path: "/div_basic", name: "DivBasic", component: DivBasic, props: true },
-	// { path: "/div_with_x", name: "DivX", component: DivX, props: true },
+	{ path: "/div_basic", name: "DivBasic", component: DivBasic, props: true },
+	{ path: "/div_with_x", name: "DivX", component: DivX, props: true },
 ];
 
 const router = createRouter({
