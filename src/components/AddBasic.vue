@@ -17,7 +17,6 @@
 			</div>
 		</div>
 
-		
 		<div class="bottom_box">
 			<div>
         		Успех: <b>{{ score }} / {{ played }}</b>
@@ -31,7 +30,7 @@
 				</div>
         	</div>
         </div>
-		
+
 		<div class="answer_box">
 			<button v-show="answer != null && showresult==false" class="btn btn-success" @click="getResult">Одговор</button>
 			<div v-show="showresult" style="min-heigth: 30px;">

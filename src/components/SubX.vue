@@ -35,7 +35,7 @@
 			<div v-show="showresult">
         		<i v-if="correct" class="far fa-check-circle fa-2x" style="color:blue"></i>
         		<i v-else class="far fa-times-circle fa-2x" style="color:red"></i>
-        		<p v-show="!correct">Тачан одговор je: {{ add1 }}-{{ add2 }}=<b>{{ add1 - add2 }}</b></p>
+        		<p v-show="!correct">Тачан одговор je: {{ add1 }}-{{ add2 }}=<b>{{ result }}</b></p>
         		<br>
         	</div>
         </div>
@@ -61,6 +61,7 @@ export default {
 		  add_1_max: 0,
 		  add_2_min: 0,
 		  add_2_max: 0,
+		  result:0,
 		  add: null,
 		  add1: null,
 		  add2: null,
@@ -107,7 +108,7 @@ export default {
     		this.answered = true;
     		this.showresult = true;
     		// correct answer
-    		if (this.answer == this.add1 - this.add2) {
+    		if (parseInt(this.answer) == this.result) {
 				this.correct = true;
     			this.score ++;
     		} else {
@@ -118,6 +119,7 @@ export default {
     	nextCalculation () {
 			this.add1 = this.randomNumber (this.add_1_min, this.add_1_max);
 			this.add2 = this.randomNumber (this.add_2_min, this.add_2_max);
+			this.result = this.add1 - this.add2;
 			if (this.add2 > this.add1) {
 				this.add = this.add2
 				this.add2 = this.add1
