@@ -1,7 +1,9 @@
 <template>
-  <div class="is-fullhd overlay">
-    <h1>{{ msg }}</h1>
-    <img src="/assets/icons-256.png" alt="Abacus">
+  <div class="dash-container">
+    <h1>{{ title }}</h1>
+    <img src="/assets/icons-144.png" alt="Abacus">
+    <br>
+    Вежбајмо алгебру
     <router-view></router-view>
   </div>
 </template>

@@ -16,6 +16,15 @@ body {
   background-image: url("/assets/math_sheet.png");
   background-repeat: repeat;
   min-height: 80vh;
+  vertical-align: middle;
+}
+
+.dash-container {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .navbar {
