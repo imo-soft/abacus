@@ -1,10 +1,10 @@
 version: 2.1
 orbs:
   # https://circleci.com/developer/orbs/orb/circleci/aws-ecr
-  # aws-ecr: circleci/aws-ecr@6.15.0
-  # aws-cli: circleci/aws-cli@1.4.1
+  aws-ecr: circleci/aws-ecr@8.1.2
+  aws-cli: circleci/aws-cli@1.4.1
   # aws-eks: circleci/aws-eks@1.0.3
-  docker: circleci/docker@2.0.1
+  docker: circleci/docker@1.5.0
   # kubernetes: circleci/kubernetes@0.11.2
 
 parameters:
@@ -18,13 +18,6 @@ parameters:
 # @doc https://circleci.com/docs/2.0/reusing-config/#the-commands-key
 #
 commands:
-
-  # export-release-number:
-  #   steps:
-  #     - run:
-  #         name: Export release number
-  #         command: |
-  #           echo "export RELEASENUMBER=`date +%s`" >> $BASH_ENV
 
   export-docker-tag:
     steps:
@@ -48,58 +41,33 @@ commands:
                 echo "export DOCKER_TAG=${version}" >> $BASH_ENV
             fi
 
-  docker-login:
-    steps:
-      - docker/check:
-          docker-username: DOCKER_USER
-          docker-password: DOCKER_PASS
-          registry: drpreag.jfrog.io/imo-soft
-
-  docker-build:
-    parameters:
-      dockerfile:
-        type: string
-    steps:
-      - docker/build:
-          dockerfile: << parameters.dockerfile >>
-          image: << pipeline.parameters.service-name >>
-          tag: ${DOCKER_TAG}
-          registry: drpreag.jfrog.io/imo-soft
-
-  docker-push:
-    steps:
-      - when:
-          condition:
-            equal: [develop, << pipeline.git.branch >>]
-          steps:
-            - docker/push:
-                tag: ${DOCKER_TAG}
-                registry: drpreag.jfrog.io/imo-soft
-                image: << pipeline.parameters.service-name >>
-      - when:
-          condition: << pipeline.git.tag >>
-          steps:
-            - docker/push:
-                tag: ${DOCKER_TAG}
-                registry: drpreag.jfrog.io/imo-soft
-                image: << pipeline.parameters.service-name >>
-
 #
 # Jobs presents building blocks of CI/CD applications.
 #
 # @doc https://circleci.com/docs/2.0/concepts/#jobs
 #
 jobs:
-  build-test-deploy:
-    machine:
-      image: ubuntu-2004:202111-02
+  build-test:
+    machine: true
     steps:
-      - checkout
       - export-docker-tag
-      - docker-login
-      - docker-build:
-          dockerfile: "Dockerfile"
-      - docker-push
+      - checkout
+      - aws-ecr/build-image:
+          dockerfile: Dockerfile
+          push-image: false
+          repo: << pipeline.parameters.service-name >>
+          tag: ${DOCKER_TAG}
+
+  build-test-push:
+    machine: true
+    steps:
+      - export-docker-tag
+      - aws-ecr/build-and-push-image:
+          create-repo: true
+          dockerfile: Dockerfile
+          push-image: true
+          repo: << pipeline.parameters.service-name >>
+          tag: ${DOCKER_TAG}
 
 #
 # Workflows can orchestrate jobs, defines run order, dependencies and approval.
@@ -107,14 +75,27 @@ jobs:
 # @doc https://circleci.com/docs/2.0/concepts/#workflows
 #
 workflows:
-
-  build:
+  untagged-develop-build:
     jobs:
-      - build-test-deploy:
+      - build-test-push:
+          filters:
+            branches:
+              only:
+                - develop
+
+  untagged-master-build:
+    jobs:
+      - build-test:
           filters:
             branches:
               only:
                 - master
-                - develop
+
+  tagged-build:
+    jobs:
+      - build-test-push:
+          filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /^[0-9]+(\.[0-9]){1,2}.*/
