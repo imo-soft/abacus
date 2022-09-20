@@ -12,7 +12,6 @@
           <a class="nav-link active" href="/mul">Множење</a>
           <a class="nav-link active" href="/div">Дељење</a>
           <a class="nav-link active" href="/about">О...</a>
-          <a class="nav-link active" href="https://it-outsource.me" target="_blank">Outsource</a>
           <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
         </div>
       </div>
