@@ -81,7 +81,7 @@ export default {
 		this.mul_1_max = parseInt(this.prop_1_max);
 		this.mul_2_min = parseInt(this.prop_2_min);
 		this.mul_2_max = parseInt(this.prop_2_max);
-		this.nextCalculation (this.prop_1_min, this.prop_1_max, this.prop_2_min, this.prop_2_max);
+		this.nextCalculation ();
 	},
 	watch: {
 		played: function (value) {
