@@ -50,6 +50,8 @@ pipeline {
                     sh """
 #!/bin/bash
 docker run -d --name ${env.APP}-test -p 8888:80 ${env.ECR}/${env.APP}:${DOCKER_TAG}
+sleep 5
+docker ps -a
 RESULT=`curl -k localhost:8888 | grep -i \$SEARCH_STRING | wc -l`
 docker stop ${env.APP}-test
 docker rm ${env.APP}-test
