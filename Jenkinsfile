@@ -47,7 +47,6 @@ pipeline {
         stage('Test (CI)') {
             steps {
                 script {
-                    sh 'env | sort'
                     sh """
 #!/bin/bash
 docker run -d --name ${env.APP}-test -p 8888:80 ${env.ECR}/${env.APP}:${DOCKER_TAG}
