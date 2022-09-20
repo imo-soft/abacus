@@ -19,7 +19,7 @@ pipeline {
         ECR = "016682580984.dkr.ecr.eu-west-1.amazonaws.com"
         APP = "abacus"
         ECR_REGION = "eu-west-1"
-        SEARCH_STRING = "administrator"
+        SEARCH_STRING = "abacus"
     }
 
     stages {
