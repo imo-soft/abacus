@@ -28,10 +28,10 @@ pipeline {
                     echo "timestamp: ${TIMESTAMP}"
                     GIT_TAG = sh(returnStdout: true, script: '/usr/bin/git tag --contains | head -1')?.trim()
                     echo "GIT TAG: >${GIT_TAG}<"
-                    if (env.GIT_BRANCH=="master" || env.GIT_BRANCH=="main") {
+                    if (env.GIT_BRANCH=="origin/master" || env.GIT_BRANCH=="origin/main") {
                         DOCKER_TAG = "prod-${TIMESTAMP}"
                     }
-                    if (env.GIT_BRANCH=="develop") {
+                    if (env.GIT_BRANCH=="origin/develop") {
                         DOCKER_TAG = "dev-${TIMESTAMP}"
                     }
                     if (GIT_TAG) {
@@ -67,7 +67,7 @@ fi
         stage('Push (CI)') {
             steps {
                 script {
-                    if ( env.GIT_BRANCH=="develop" || env.GIT_BRANCH=="master" || env.GIT_BRANCH=="main" || TAGGED_BUILD ) {
+                    if ( env.GIT_BRANCH=="origin/develop" || env.GIT_BRANCH=="origin/master" || env.GIT_BRANCH=="origin/main" || TAGGED_BUILD ) {
                         docker.withRegistry("https://${env.ECR}", "ecr:${env.ECR_REGION}:${AWS_CREDENTIALS}") {
                             echo 'Start pushing image to ECR.'
                             app.push("${DOCKER_TAG}")
