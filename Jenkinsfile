@@ -51,8 +51,8 @@ pipeline {
                     sh """
 #!/bin/bash
 docker run -d --name ${env.APP}-${env.BUILD_NUMBER} -p ${random_num}:80 ${env.ECR}/${env.APP}:${DOCKER_TAG}
+sleep 10
 RESULT=`curl -k localhost:${random_num} | grep -i \$SEARCH_STRING | wc -l`
-sleep 3
 docker stop ${env.APP}-${env.BUILD_NUMBER}
 docker rm ${env.APP}-${env.BUILD_NUMBER}
 if [ \$RESULT -eq 0 ]
