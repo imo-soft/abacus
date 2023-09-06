@@ -9,7 +9,7 @@
       </div>
       <div>
         Аутор: Предраг Влајковић<br>
-        mailto: predrag.vlajkovic at gmail dot com<br><br>
+        <br>
         Посвећено мом сину Огњену, са жељом да буде успешан математичар<br><br>
       </div>
     </div>
