@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: abacus
-        image: ghcr.io/imo-soft/abacus.1.9.8
+        image: ghcr.io/imo-soft/abacus:1.9.8
         ports:
         - containerPort: 80
         resources:
