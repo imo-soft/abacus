@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: abacus
+  labels:
+    app: abacus
+spec:
+  selector:
+    matchLabels:
+      app: iabacus
+  template:
+    metadata:
+      labels:
+        app: abacus
+    spec:
+      containers:
+      - name: abacus
+        image: ghcr.io/imo-soft/abacus.it-outsource.me.1.9.8
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+          limits:
+            memory: "200Mi"
+            cpu: "200m"
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+        securityContext:
+          allowPrivilegeEscalation: false
+          # readOnlyRootFilesystem: true
+          # runAsNonRoot: true
+      imagePullSecrets:
+      - name: docker-registry
+  replicas: 1
+  revisionHistoryLimit: 1
