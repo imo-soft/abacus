@@ -15,7 +15,7 @@
     "vue-navigation-bar": "^5.0.0",
     "vue-router": "^4.0.14",
     "ws": ">=8.17.1",
-    "postcss": ">=8.4.31",
+    "postcss": ">=8.4.40",
     "ip": ">=2.0.1"
   },
   "devDependencies": {
@@ -27,7 +27,7 @@
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "ws": ">=8.17.1",
-    "postcss": ">=8.4.31",
+    "postcss": ">=8.4.40",
     "ip": ">=2.0.1"
   },
   "eslintConfig": {
