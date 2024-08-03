@@ -1,5 +1,4 @@
 applicationName: abacus
-# namespace: production
 
 deployment:
   image:
