@@ -1,44 +1,42 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: abacus
+  name: {{ .Values.applicationName }}
   labels:
-    app: abacus
+    app: {{ .Values.applicationName }}
 spec:
   selector:
     matchLabels:
-      app: abacus
+      app: {{ .Values.applicationName }}
   template:
     metadata:
       labels:
-        app: abacus
+        app: {{ .Values.applicationName }}
     spec:
       containers:
-      - name: abacus
-        image: ghcr.io/imo-soft/abacus:1.9.8
+      - name: {{ .Values.applicationName }}
+        image: {{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
+        {{- if .Values.deployment.resources.enabled }}
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            {{- toYaml .Values.deployment.resources.requests | nindent 12 }}
           limits:
-            memory: "200Mi"
-            cpu: "200m"
-        imagePullPolicy: IfNotPresent
+            {{- toYaml .Values.deployment.resources.limits | nindent 12  }}
+        {{- end }}
+        {{- if .Values.deployment.healthChecks.enabled }}
         livenessProbe:
-          httpGet:
-            path: /
-            port: 80
+          {{- toYaml .Values.deployment.healthChecks.livenessProbe | nindent 10 }}
         readinessProbe:
-          httpGet:
-            path: /
-            port: 80
+          {{- toYaml .Values.deployment.healthChecks.readinessProbe | nindent 10  }}
+        {{- end }}
         securityContext:
           allowPrivilegeEscalation: false
-          # readOnlyRootFilesystem: true
-          # runAsNonRoot: true
       imagePullSecrets:
-      - name: docker-registry
-  replicas: 1
-  revisionHistoryLimit: 1
+      - name: {{ .Values.deployment.imagePullSecrets.name }}
+  {{- if not .Values.hpa.autoscaling.enabled }}
+  replicas: {{ .Values.deployment.replicas }}
+  {{- end }}
+  revisionHistoryLimit: {{ .Values.deployment.revisionHistoryLimit }}
