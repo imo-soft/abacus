@@ -16,7 +16,7 @@ jobs:
     env:
       IMAGE_NAME: ${{ github.repository }}
       DOCKER_REGISTRY: ghcr.io
-      USERNAME: abacus
+      USERNAME: drpreag
       PAT: ${{ secrets.GH_ACTIONS_PAT }}
 
     steps:
