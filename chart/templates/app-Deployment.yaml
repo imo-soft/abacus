@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.applicationName }}
+  labels:
+    app: {{ .Values.applicationName }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.applicationName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.applicationName }}
+    spec:
+      containers:
+      - name: {{ .Values.applicationName }}
+        image: {{ .Values.deployment.image.name }}:{{ .Values.deployment.image.tag }}
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        {{- if .Values.deployment.resources.enabled }}
+        resources:
+          requests:
+            {{- toYaml .Values.deployment.resources.requests | nindent 12 }}
+          limits:
+            {{- toYaml .Values.deployment.resources.limits | nindent 12  }}
+        {{- end }}
+        {{- if .Values.deployment.healthChecks.enabled }}
+        livenessProbe:
+          {{- toYaml .Values.deployment.healthChecks.livenessProbe | nindent 10 }}
+        readinessProbe:
+          {{- toYaml .Values.deployment.healthChecks.readinessProbe | nindent 10  }}
+        {{- end }}
+        securityContext:
+          allowPrivilegeEscalation: false
+      imagePullSecrets:
+      - name: {{ .Values.deployment.imagePullSecrets.name }}
+  {{- if not .Values.hpa.autoscaling.enabled }}
+  replicas: {{ .Values.deployment.replicas }}
+  {{- end }}
+  revisionHistoryLimit: {{ .Values.deployment.revisionHistoryLimit }}

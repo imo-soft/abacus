@@ -1,0 +1,48 @@
+applicationName: abacus
+
+deployment:
+  image:
+    name: ghcr.io/imo-soft/abacus
+    tag: latest
+  replicas: 1
+  revisionHistoryLimit: 3
+  resources:
+    enabled: true
+    limits:
+      cpu: 50m
+      memory: 50Mi
+    requests:
+      cpu: 20m
+      memory: 20Mi
+  healthChecks:
+    enabled: true
+    livenessProbe:
+      httpGet:
+        path: /
+        port: 80
+    readinessProbe:
+      httpGet:
+        path: /
+        port: 80
+  imagePullSecrets:
+    name: docker-registry
+
+service:
+  loadBalancerIP: 127.0.0.1
+
+ingress:
+  fqdn: abacus.it-outsource.me
+
+hpa:
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 2
+    targetCPUUtilization: 75
+    targetMemoryUtilization: 75
+    # behavior:
+    #   ScaleUp:
+    #   ScaleDown:
+
+pdb:
+  maxUnavailable: 1

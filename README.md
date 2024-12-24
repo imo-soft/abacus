@@ -10,4 +10,4 @@ I wish him to be good mathematician.
 
 Live app available at https://abacus.it-outsource.me .
 
-[![drpreag](https://circleci.com/gh/drpreag/abacus.svg?style=shield)](https://abacus.it-outsource.me)
+[![abacus](https://circleci.com/gh/abacus/abacus.svg?style=shield)](https://abacus.it-outsource.me)
