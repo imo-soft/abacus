@@ -2,8 +2,8 @@ applicationName: abacus
 
 deployment:
   image:
-    repository: ghcr.io/imo-soft/abacus
-    tag: 1.9.8
+    name: ghcr.io/imo-soft/abacus
+    tag: latest
   replicas: 1
   revisionHistoryLimit: 3
   resources:
@@ -36,10 +36,10 @@ ingress:
 hpa:
   autoscaling:
     enabled: true
-    minReplicas: 2
-    maxReplicas: 5
-    targetCPUUtilization: 40
-    targetMemoryUtilization: 40
+    minReplicas: 1
+    maxReplicas: 2
+    targetCPUUtilization: 75
+    targetMemoryUtilization: 75
     # behavior:
     #   ScaleUp:
     #   ScaleDown:
