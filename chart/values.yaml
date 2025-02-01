@@ -28,10 +28,12 @@ deployment:
     name: docker-registry
 
 service:
-  loadBalancerIP: 127.0.0.1
+  type: NodePort
+  servicePort: 80
+  portName: http
 
 ingress:
-  fqdn: abacus.it-outsource.me
+  fqdn: abacus.local
 
 hpa:
   autoscaling:
