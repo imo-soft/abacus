@@ -34,7 +34,9 @@ service:
 
 ingress:
   fqdn: abacus.local
-
+  tls:
+    enable: false
+    secretName: abacus-tls-secret
 hpa:
   autoscaling:
     enabled: true

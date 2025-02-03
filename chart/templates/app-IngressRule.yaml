@@ -5,6 +5,12 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
 spec:
+  {{- if .Values.ingress.tls.enable }}
+  tls:
+  - hosts:
+      - {{ .Values.ingress.fqdn }}
+    secretName: {{ .Values.ingress.tls.secretName }}
+  {{- end }}
   {{- if .Values.ingress.ingressClassName }}
   ingressClassName: {{ .Values.ingress.ingressClassName }}
   {{- end }}
@@ -18,4 +24,9 @@ spec:
             service:
               name: {{ .Values.applicationName }}
               port:
-                number: 80
+                number: {{ .Values.service.servicePort }}
+                # {{- if .Values.ingress.tls.enable }}
+                # number: 443
+                # {{- else }}
+                # number: {{ .Values.service.servicePort }}
+                # {{- end }}
