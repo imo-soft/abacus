@@ -37,7 +37,6 @@ ingress:
   tls:
     enable: false
     secretName: abacus-tls-secret
-    secretNameSpace: cert-manager
 hpa:
   autoscaling:
     enabled: true
