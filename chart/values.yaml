@@ -54,3 +54,11 @@ hpa:
 
 pdb:
   maxUnavailable: 1
+
+secrets:
+  enabled: false
+  refreshInterval: 5m
+  secretStoreRef: hashicorp-vault-store-production
+  dataFrom:
+    - extract:
+        key: abacus
