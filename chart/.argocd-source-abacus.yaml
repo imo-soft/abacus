@@ -1,0 +1,8 @@
+helm:
+  parameters:
+  - name: image.name
+    value: ghcr.io/imo-soft/abacus
+    forcestring: true
+  - name: image.tag
+    value: 2.0.3
+    forcestring: true
