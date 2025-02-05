@@ -62,3 +62,7 @@ secrets:
   dataFrom:
     - extract:
         key: abacus
+
+configmap:
+  enabled: false
+  data: []
