@@ -25,8 +25,4 @@ spec:
               name: {{ .Values.applicationName }}
               port:
                 number: {{ .Values.service.servicePort }}
-                # {{- if .Values.ingress.tls.enable }}
-                # number: 443
-                # {{- else }}
-                # number: {{ .Values.service.servicePort }}
-                # {{- end }}
+
