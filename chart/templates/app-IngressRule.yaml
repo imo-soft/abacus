@@ -2,9 +2,22 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Values.applicationName }}
+  {{- if .Values.ingress.metadata_annotations }}
+  {{- if .Values.ingress.metadata_annotations.enabled}}
   annotations:
-    kubernetes.io/ingress.class: nginx
+    {{- toYaml .Values.ingress.metadata_annotations.annotations | nindent 4 }}
+  {{- end }}
+  {{- end }}
 spec:
+  {{- if .Values.ingress.tls.enable }}
+  tls:
+  - hosts:
+      - {{ .Values.ingress.fqdn }}
+    secretName: {{ .Values.ingress.tls.secretName }}
+  {{- end }}
+  {{- if .Values.ingress.ingressClassName }}
+  ingressClassName: {{ .Values.ingress.ingressClassName }}
+  {{- end }}
   rules:
   - host: {{ .Values.ingress.fqdn }}
     http:
@@ -15,4 +28,5 @@ spec:
             service:
               name: {{ .Values.applicationName }}
               port:
-                number: 80
+                number: {{ .Values.service.servicePort }}
+

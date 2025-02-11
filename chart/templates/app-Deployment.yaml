@@ -13,12 +13,31 @@ spec:
       labels:
         app: {{ .Values.applicationName }}
     spec:
+      {{- if .Values.secrets.enabled }}
+      volumes:
+      - name: secret
+        secret:
+          secretName: {{ .Values.applicationName }}
+      {{- end }}
       containers:
       - name: {{ .Values.applicationName }}
-        image: {{ .Values.deployment.image.name }}:{{ .Values.deployment.image.tag }}
-        imagePullPolicy: IfNotPresent
+        {{- if .Values.secrets.enabled }}
+        volumeMounts:
+        - mountPath: "/secret"
+          name: secret
+          readOnly: true
+        {{- end }}
+        {{- if .Values.configmap.enabled }}
+        envFrom:
+        - configMapRef:
+            name: {{ .Values.applicationName }}
+        {{- end }}
+        image: {{ .Values.image.name }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
-        - containerPort: 80
+          - name: http
+            containerPort: {{ .Values.deployment.containerPort }}
+            protocol: TCP
         {{- if .Values.deployment.resources.enabled }}
         resources:
           requests:
@@ -35,7 +54,7 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
       imagePullSecrets:
-      - name: {{ .Values.deployment.imagePullSecrets.name }}
+      - name: {{ .Values.image.imagePullSecrets.name }}
   {{- if not .Values.hpa.autoscaling.enabled }}
   replicas: {{ .Values.deployment.replicas }}
   {{- end }}

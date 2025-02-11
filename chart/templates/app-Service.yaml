@@ -2,10 +2,25 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Values.applicationName }}
+  {{- if .Values.service.metadata_annotations }}
+  {{- if .Values.service.metadata_annotations.enabled}}
+  annotations:
+    {{- toYaml .Values.service.metadata_annotations.annotations | nindent 4 }}
+  {{- end }}
+  {{- end }}
 spec:
-  type: LoadBalancer
-  loadBalancerIP: {{ .Values.service.loadBalancerIP }}
+  {{- if .Values.service.type }}
+  type: {{ .Values.service.type }}
+  {{- else }}
+  type: ClusterIP
+  {{- end }}
   selector:
     app: {{ .Values.applicationName }}
   ports:
-  - port: 80
+    - name: {{ .Values.service.portName }}
+      port: {{ .Values.service.servicePort }}
+      targetPort: {{ .Values.service.servicePort }}
+      {{- if .Values.service.nodePort }}
+      nodePort: {{ .Values.service.nodePort }}
+      {{- end }}
+

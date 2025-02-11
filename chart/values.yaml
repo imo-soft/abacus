@@ -1,11 +1,16 @@
 applicationName: abacus
 
+image:
+  name: ghcr.io/imo-soft/abacus
+  tag: latest
+  imagePullSecrets:
+    name: docker-registry
+  pullPolicy: IfNotPresent
+
 deployment:
-  image:
-    name: ghcr.io/imo-soft/abacus
-    tag: latest
   replicas: 1
   revisionHistoryLimit: 3
+  containerPort: 80
   resources:
     enabled: true
     limits:
@@ -24,14 +29,16 @@ deployment:
       httpGet:
         path: /
         port: 80
-  imagePullSecrets:
-    name: docker-registry
 
 service:
-  loadBalancerIP: 127.0.0.1
+  servicePort: 80
+  portName: http
 
 ingress:
-  fqdn: abacus.it-outsource.me
+  fqdn: abacus.local
+  tls:
+    enable: false
+    secretName: abacus-tls-secret
 
 hpa:
   autoscaling:
@@ -46,3 +53,15 @@ hpa:
 
 pdb:
   maxUnavailable: 1
+
+secrets:
+  enabled: false
+  refreshInterval: 5m
+  secretStoreRef: hashicorp-vault-store-production
+  dataFrom:
+    - extract:
+        key: abacus
+
+configmap:
+  enabled: false
+  data: []
