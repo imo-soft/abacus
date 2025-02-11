@@ -29,3 +29,4 @@ spec:
               name: {{ .Values.applicationName }}
               port:
                 number: {{ .Values.service.servicePort }}
+
