@@ -31,7 +31,6 @@ deployment:
         port: 80
 
 service:
-  type: NodePort
   servicePort: 80
   portName: http
 
