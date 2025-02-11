@@ -4,5 +4,5 @@ helm:
     value: ghcr.io/imo-soft/abacus
     forcestring: true
   - name: image.tag
-    value: master-1739286682
+    value: master-1739287081
     forcestring: true
